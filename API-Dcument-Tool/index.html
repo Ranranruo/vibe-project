@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAPI 3.0 명세서 (2중 토글)</title>
+    <style>
+        /* ------------------------------------- */
+        /* 1. Base & Layout (Card UI) */
+        /* ------------------------------------- */
+        :root {
+            --primary-color: #3B82F6; /* Blue-600 */
+            --primary-hover: #2563EB;
+            --danger-color: #EF4444; /* Red-500 */
+            --bg-body: #F7F8FA; /* Light Grey Background */
+            --card-bg: #FFFFFF;
+            --text-dark: #111827;
+            --text-light: #6B7280;
+            --border-color: #D1D5DB; /* Gray-300 */
+            --focus-ring: rgba(59, 130, 246, 0.2);
+            --radius-md: 10px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body); 
+            color: var(--text-dark); 
+            margin: 0; 
+            padding: 40px; 
+            line-height: 1.6;
+        }
+        .main-container { max-width: 1024px; margin: 0 auto; }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #E5E7EB;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+        }
+        h1 { text-align: left; color: var(--text-dark); margin: 0 0 40px 0; font-weight: 700; font-size: 2rem; }
+        h2 { font-size: 1.5rem; padding-bottom: 8px; margin: 0 0 24px 0; color: var(--text-dark); font-weight: 600; }
+
+        /* ------------------------------------- */
+        /* 2. Form Elements (Standard & Clean) */
+        /* ------------------------------------- */
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #374151; }
+        input[type="text"], input[type="number"], select, textarea, input[type="file"] {
+            width: 100%; padding: 10px 12px; border: 1px solid var(--border-color);
+            background-color: var(--card-bg); border-radius: 6px; box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s; font-size: 1rem; font-weight: 500;
+        }
+        input[type="file"] { padding: 8px 12px; }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color); box-shadow: 0 0 0 3px var(--focus-ring); outline: none;
+        }
+        textarea { min-height: 120px; }
+
+        /* ------------------------------------- */
+        /* 3. Button Styles */
+        /* ------------------------------------- */
+        button {
+            padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer;
+            font-weight: 600; transition: all 0.2s; font-size: 0.95rem;
+        }
+        .btn-primary { background-color: var(--primary-color); color: white; width: 100%; }
+        .btn-primary:hover { background-color: var(--primary-hover); }
+        .btn-secondary {
+            background-color: transparent; color: #374151; border: 1px solid var(--border-color);
+            padding: 8px 15px; margin-top: 8px; display: inline-block; width: auto;
+        }
+        .btn-secondary:hover { background-color: #F9FAFB; border-color: #B0B6BF; }
+        .btn-danger { background-color: var(--danger-color); color: white; padding: 8px 15px; }
+        .btn-danger:hover { background-color: #DC2626; }
+        .remove-btn {
+            background-color: #FEE2E2; color: var(--danger-color);
+            padding: 6px 10px; font-weight: 500;
+        }
+        .remove-btn:hover { background-color: #FECACA; }
+
+        /* ------------------------------------- */
+        /* 4. Dynamic Input Sections */
+        /* ------------------------------------- */
+        .spec-section-container {
+            border: 1px solid #E5E7EB; padding: 16px; border-radius: 8px;
+            background-color: #F9FAFB; margin-top: 10px;
+        }
+        .item-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+        .response-group {
+            border: 1px solid #E5E7EB; padding: 15px; margin-bottom: 15px;
+            border-radius: 8px; background-color: var(--card-bg);
+        }
+
+        /* ------------------------------------- */
+        /* 5. Load & Download Controls */
+        /* ------------------------------------- */
+        .io-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end; }
+        #load-json-btn { background-color: #4B5563; color: white; }
+        #load-json-btn:hover { background-color: #374151; }
+        #download-json-btn { background-color: var(--primary-color); color: white; }
+        
+        /* ------------------------------------- */
+        /* 6. Output & Toggle Styles (2-Layer Toggle) */
+        /* ------------------------------------- */
+        #endpoint-list { list-style: none; padding: 0; }
+        #endpoint-list li {
+            background-color: var(--card-bg); border: 1px solid var(--border-color);
+            margin-bottom: 12px; border-radius: var(--radius-md);
+            overflow: hidden; transition: box-shadow 0.2s;
+        }
+        #endpoint-list li:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); }
+        
+        /* Main Toggle Header */
+        .endpoint-header {
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; padding: 16px 20px;
+        }
+        .endpoint-header:hover { background-color: #F9FAFB; }
+        .endpoint-header .title { font-size: 1rem; font-weight: 600; }
+        .endpoint-header .title strong { color: var(--primary-color); }
+        .endpoint-header .toggle-icon { font-size: 1.2rem; transition: transform 0.2s ease; }
+        .endpoint-header.active .toggle-icon { transform: rotate(180deg); }
+
+        /* Main Toggle Content */
+        .spec-display { display: none; padding: 20px; border-top: 1px solid #F3F4F6; font-size: 0.9rem; }
+        .spec-display h4 { font-size: 1rem; margin: 10px 0 8px 0; color: var(--text-dark); font-weight: 600; }
+        
+        /* Delete Button Area */
+        .endpoint-actions { padding: 16px 20px; border-left: 1px solid var(--border-color); }
+        
+        /* --- [NEW] Inner Toggle Styles --- */
+        .response-item-preview { margin-bottom: 8px; }
+        .response-item-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 12px; background-color: #F9FAFB;
+            border: 1px solid #E5E7EB; border-radius: 4px;
+        }
+        .response-item-header:not(.static) { cursor: pointer; }
+        .response-item-header:not(.static):hover { background-color: #F3F4F6; }
+        .response-item-header .title { font-weight: 500; }
+        .toggle-icon-inner { transition: transform 0.2s; font-size: 0.9rem; }
+        .response-item-header.active .toggle-icon-inner { transform: rotate(180deg); }
+
+        .response-item-body { display: none; padding-top: 10px; }
+        /* --- [END NEW] --- */
+
+        .response-example-box { 
+            background-color: #F3F4F6; color: #1F2937; border: 1px solid var(--border-color);
+            padding: 10px; border-radius: 6px; white-space: pre-wrap; 
+            font-family: monospace; max-height: 150px; overflow-y: auto;
+            margin-top: 0; /* Adjusted margin */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>OpenAPI 명세서 편집기</h1>
+        
+        <div class="card">
+            <h2>API 기본 정보</h2>
+            <div id="api-info">
+                <div class="input-group">
+                    <label for="api-title">API 제목:</label>
+                    <input type="text" id="api-title" value="My Awesome API" placeholder="예: 쇼핑몰 백엔드 API">
+                </div>
+                <div class="input-group">
+                    <label for="api-version">버전:</label>
+                    <input type="text" id="api-version" value="1.0.0" placeholder="예: 1.0.0">
+                </div>
+                <div class="input-group">
+                    <label for="api-server">기본 서버 URL:</label>
+                    <input type="text" id="api-server" value="https://api.example.com/v1" placeholder="예: https://api.example.com/v1">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>파일 관리</h2>
+            <div class="io-controls">
+                <div class="load-controls">
+                    <label>JSON 파일 불러오기</label>
+                    <input type="file" id="load-file-input" accept=".json">
+                    <button id="load-json-btn" class="btn-primary" style="margin-top: 10px;">📤 불러오기</button>
+                </div>
+                <div class="download-controls">
+                     <label>현재 명세서 내보내기</label>
+                    <button id="download-json-btn" class="btn-primary" style="margin-top: 30px;">💾 OpenAPI JSON 다운로드</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>엔드포인트 추가</h2>
+            <div id="spec-form">
+                <div class="input-group">
+                    <label for="endpoint-url">URL 경로:</label>
+                    <input type="text" id="endpoint-url" placeholder="/users/{id}">
+                </div>
+                <div class="input-group">
+                    <label for="endpoint-method">HTTP 메서드:</label>
+                    <select id="endpoint-method">
+                        <option value="get">GET</option>
+                        <option value="post">POST</option>
+                        <option value="put">PUT</option>
+                        <option value="delete">DELETE</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label>요청 헤더 (Headers):</label>
+                    <div id="headers-list" class="spec-section-container"></div>
+                    <button type="button" class="btn-secondary" id="add-header-input-btn">➕ 헤더 추가</button>
+                </div>
+                
+                <div class="input-group">
+                    <label>응답 명세 (Responses):</label>
+                    <div id="responses-list" class="spec-section-container"></div>
+                    <button type="button" class="btn-secondary" id="add-response-input-btn">➕ 응답 코드 추가</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="endpoint-description">엔드포인트 설명 (Summary):</label>
+                    <textarea id="endpoint-description" placeholder="특정 ID를 가진 사용자 정보를 조회/수정/삭제합니다."></textarea>
+                </div>
+                
+                <button id="add-endpoint-btn" class="btn-primary">➕ 엔드포인트 명세 추가</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>현재 명세서 미리보기</h2>
+            <div id="spec-output">
+                <ul id="endpoint-list">
+                    </ul>
+            </div>
+        </div>
+
+    </div> <script>
+        // JavaScript 로직 (기능 변경 없음, HTML 구조 변경에 따른 셀렉터 수정)
+        let paths = {}; 
+        
+        // DOM 요소
+        const apiTitleInput = document.getElementById('api-title');
+        const apiVersionInput = document.getElementById('api-version');
+        const apiServerInput = document.getElementById('api-server');
+        const loadFileInput = document.getElementById('load-file-input'); 
+        const loadJsonBtn = document.getElementById('load-json-btn');       
+
+        const headersList = document.getElementById('headers-list');
+        const responsesList = document.getElementById('responses-list');
+        const urlInput = document.getElementById('endpoint-url');
+        const methodSelect = document.getElementById('endpoint-method');
+        const descriptionTextarea = document.getElementById('endpoint-description');
+        const addBtn = document.getElementById('add-endpoint-btn');
+        const downloadBtn = document.getElementById('download-json-btn');
+        const endpointList = document.getElementById('endpoint-list');
+        const addHeaderInputBtn = document.getElementById('add-header-input-btn');
+        const addResponseInputBtn = document.getElementById('add-response-input-btn');
+
+        const initialSuccessExample = `{\n  "id": 1,\n  "name": "홍길동",\n  "email": "hong@example.com"\n}`;
+        const initialErrorExample = `{\n  "error": "Not Found",\n  "message": "사용자 ID 999를 찾을 수 없습니다."\n}`;
+
+        // --- 초기화 및 동적 필드 추가 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            addHeaderInput('Authorization', 'Bearer <token>');
+            addResponseInput('200', '요청 성공', initialSuccessExample);
+            addResponseInput('404', 'ID를 찾을 수 없음', initialErrorExample);
+            renderEndpointList();
+        });
+
+        function addHeaderInput(key = '', value = '') {
+            const item = document.createElement('div');
+            item.className = 'item-row header-item';
+            item.innerHTML = `
+                <input type="text" class="header-key" placeholder="Header-Key" value="${key}">
+                <input type="text" class="header-value" placeholder="Header Value" value="${value}">
+                <button type="button" class="remove-btn">X</button>
+            `;
+            headersList.appendChild(item);
+            item.querySelector('.remove-btn').addEventListener('click', () => headersList.removeChild(item));
+        }
+
+        function addResponseInput(code = '', description = '', jsonExample = '') {
+            const item = document.createElement('div');
+            item.className = 'response-group response-item';
+            item.innerHTML = `
+                <div class="response-row-header">
+                    <input type="number" class="response-code code-input" placeholder="코드 (200)" value="${code}" min="100" max="599">
+                    <input type="text" class="response-description" placeholder="설명 (성공)" value="${description}">
+                    <button type="button" class="remove-btn">X</button>
+                </div>
+                <label style="font-weight: 500; font-size: 0.9em; margin-top: 5px;">응답 JSON 예시:</label>
+                <textarea class="response-example" placeholder="JSON 형식으로 입력하세요">${jsonExample}</textarea>
+            `;
+            responsesList.appendChild(item);
+            item.querySelector('.remove-btn').addEventListener('click', () => responsesList.removeChild(item));
+        }
+        
+        // --- 데이터 수집 및 OAS 변환 로직 (이전과 동일) ---
+        function collectHeaders() {
+            const headers = {};
+            headersList.querySelectorAll('.header-item').forEach(item => {
+                const key = item.querySelector('.header-key').value.trim();
+                const value = item.querySelector('.header-value').value.trim();
+                if (key) {
+                    headers[key] = value;
+                }
+            });
+            return headers;
+        }
+
+        function collectResponses() {
+            const responses = [];
+            responsesList.querySelectorAll('.response-item').forEach(item => {
+                const code = item.querySelector('.response-code').value.trim();
+                const description = item.querySelector('.response-description').value.trim();
+                const example = item.querySelector('.response-example').value;
+                
+                if (code) {
+                    responses.push({
+                        code: code,
+                        description: description,
+                        jsonExample: example 
+                    });
+                }
+            });
+            return responses;
+        }
+
+        function toOASPath(url) {
+            return url.replace(/{([a-zA-Z0-9_]+)}/g, '{$1}');
+        }
+
+        function createOASResponse(responses) {
+            const oasResponses = {};
+            responses.forEach(res => {
+                const content = {};
+                const example = res.jsonExample.trim();
+
+                if (example) {
+                    content['application/json'] = {
+                        schema: { type: 'object' },
+                        example: example.trim()
+                    };
+                }
+
+                oasResponses[res.code] = {
+                    description: res.description || 'No description provided.',
+                    content: content
+                };
+            });
+            return oasResponses;
+        }
+
+
+        function addEndpoint() {
+            const url = urlInput.value.trim();
+            const method = methodSelect.value.toLowerCase();
+            const description = descriptionTextarea.value.trim();
+            const headers = collectHeaders();
+            const responses = collectResponses();
+
+            if (!url || !description || responses.length === 0) {
+                alert('URL 경로, 설명, 응답 코드를 최소 하나 이상 입력해 주세요.');
+                return;
+            }
+
+            const oasPath = toOASPath(url);
+
+            const operation = {
+                summary: description,
+                description: description,
+                responses: createOASResponse(responses),
+                parameters: Object.keys(headers).map(key => ({
+                    name: key,
+                    in: 'header',
+                    required: true, 
+                    schema: { type: 'string' },
+                    example: headers[key]
+                }))
+            };
+            
+            if (!paths[oasPath]) {
+                paths[oasPath] = {};
+            }
+            paths[oasPath][method] = operation;
+
+            renderEndpointList(); 
+            
+            urlInput.value = '';
+            methodSelect.value = 'get';
+            descriptionTextarea.value = '';
+            headersList.innerHTML = '';
+            responsesList.innerHTML = '';
+            addHeaderInput();
+            addResponseInput('200', '요청 성공', initialSuccessExample);
+            urlInput.focus();
+        }
+
+        function deleteEndpoint(oasPath, method) {
+            if (confirm(`정말로 [${method.toUpperCase()}] ${oasPath} 엔드포인트를 삭제하시겠습니까?`)) {
+                if (paths[oasPath]) {
+                    delete paths[oasPath][method];
+                    if (Object.keys(paths[oasPath]).length === 0) {
+                        delete paths[oasPath];
+                    }
+                }
+                renderEndpointList(); 
+            }
+        }
+
+        // --- [UPDATED] renderEndpointList (2중 토글 로직 추가) ---
+        function renderEndpointList() {
+            endpointList.innerHTML = ''; 
+            const pathKeys = Object.keys(paths);
+            
+            if (pathKeys.length === 0) {
+                endpointList.innerHTML = '<li style="justify-content: center; padding: 20px; color: #6B7280;">아직 추가된 엔드포인트가 없습니다.</li>';
+                return;
+            }
+
+            pathKeys.forEach(oasPath => {
+                const pathItem = paths[oasPath];
+                Object.keys(pathItem).forEach(method => {
+                    const operation = pathItem[method];
+                    const listItem = document.createElement('li');
+                    
+                    let headerHtml = '';
+                    const headers = operation.parameters.filter(p => p.in === 'header');
+                    if (headers.length > 0) {
+                        headerHtml += '<h4>요청 헤더:</h4>';
+                        headers.forEach(h => {
+                            headerHtml += `<p style="margin: 0; padding-left: 5px;">- <strong>${h.name}</strong>: ${h.example}</p>`;
+                        });
+                    }
+
+                    // [NEW] 응답 HTML 생성 (2중 토글 구조)
+                    let responseHtml = '<h4>응답 명세:</h4>';
+                    Object.keys(operation.responses).forEach(code => {
+                        const res = operation.responses[code];
+                        const example = res.content && res.content['application/json'] ? res.content['application/json'].example : '';
+                        
+                        if (example) {
+                            // JSON 예시가 있으면 토글 기능 추가
+                            responseHtml += `
+                                <div class="response-item-preview">
+                                    <div class="response-item-header">
+                                        <span class="title">[<strong>${code}</strong>] ${res.description}</span>
+                                        <span class="toggle-icon-inner">▾</span>
+                                    </div>
+                                    <div class="response-item-body">
+                                        <div class="response-example-box">${example}</div>
+                                    </div>
+                                </div>`;
+                        } else {
+                            // 예시가 없으면 static (클릭 안 됨)
+                            responseHtml += `
+                                <div class="response-item-preview">
+                                    <div class="response-item-header static">
+                                        <span class="title">[<strong>${code}</strong>] ${res.description}</span>
+                                    </div>
+                                </div>`;
+                        }
+                    });
+
+                    // 새 HTML 구조 적용
+                    listItem.innerHTML = `
+                        <div style="flex-grow: 1;">
+                            <div class="endpoint-header">
+                                <div class="title">
+                                    <strong>[${method.toUpperCase()}]</strong> ${oasPath}
+                                </div>
+                                <div class="toggle-icon">▾</div>
+                            </div>
+                            <div class="spec-display">
+                                <p style="margin-top: 0; color: #374151;">${operation.summary}</p>
+                                ${headerHtml}
+                                ${responseHtml}
+                            </div>
+                        </div>
+                        <div class="endpoint-actions">
+                            <button class="btn-danger delete-btn" data-path="${oasPath}" data-method="${method}">삭제</button>
+                        </div>
+                    `;
+                    endpointList.appendChild(listItem);
+                });
+            });
+
+            // 이벤트 리스너: 메인 토글 (Endpoint)
+            document.querySelectorAll('.endpoint-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    const specDisplay = header.nextElementSibling;
+                    if (specDisplay.style.display === "block") {
+                        specDisplay.style.display = "none";
+                    } else {
+                        specDisplay.style.display = "block";
+                    }
+                });
+            });
+
+            // [NEW] 이벤트 리스너: 내부 토글 (Response)
+            document.querySelectorAll('.response-item-header').forEach(innerHeader => {
+                if (!innerHeader.classList.contains('static')) {
+                    innerHeader.addEventListener('click', (e) => {
+                        e.stopPropagation(); // 중요: 부모(메인) 토글이 닫히지 않도록 함
+                        innerHeader.classList.toggle('active');
+                        const innerBody = innerHeader.nextElementSibling;
+                        if (innerBody.style.display === "block") {
+                            innerBody.style.display = "none";
+                        } else {
+                            innerBody.style.display = "block";
+                        }
+                    });
+                }
+            });
+
+            // 이벤트 리스너: 삭제 (delete-btn)
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation(); // 중요: 메인 토글이 닫히지 않도록 함
+                    const path = e.target.getAttribute('data-path');
+                    const method = e.target.getAttribute('data-method');
+                    deleteEndpoint(path, method);
+                });
+            });
+        }
+        
+        function downloadJSON() {
+            if (Object.keys(paths).length === 0) {
+                alert('다운로드할 엔드포인트가 없습니다.');
+                return;
+            }
+
+            const openApiSpec = {
+                openapi: '3.0.0', 
+                info: {
+                    title: apiTitleInput.value.trim() || 'API Documentation',
+                    version: apiVersionInput.value.trim() || '1.0.0'
+                },
+                servers: [
+                    {
+                        url: apiServerInput.value.trim() || '/'
+                    }
+                ],
+                paths: paths
+            };
+
+            const jsonString = JSON.stringify(openApiSpec, null, 2);
+            
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            
+            a.href = url;
+            a.download = 'openapi_specification.json'; 
+            
+            document.body.appendChild(a);
+            a.click();
+            
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // --- JSON 파일 불러오기 기능 ---
+        function loadJSON() {
+            const file = loadFileInput.files[0];
+            if (!file) {
+                alert('불러올 JSON 파일을 선택해 주세요.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const loadedSpec = JSON.parse(event.target.result);
+
+                    if (loadedSpec.openapi !== '3.0.0' || !loadedSpec.paths) {
+                        alert('선택된 파일은 유효한 OpenAPI 3.0 명세서 형식이 아닙니다.');
+                        return;
+                    }
+
+                    paths = loadedSpec.paths;
+
+                    if (loadedSpec.info) {
+                        apiTitleInput.value = loadedSpec.info.title || '';
+                        apiVersionInput.value = loadedSpec.info.version || '';
+                    }
+                    if (loadedSpec.servers && loadedSpec.servers[0] && loadedSpec.servers[0].url) {
+                        apiServerInput.value = loadedSpec.servers[0].url;
+                    } else {
+                        apiServerInput.value = ''; 
+                    }
+
+                    renderEndpointList();
+                    alert('OpenAPI 명세서를 성공적으로 불러왔습니다. 편집을 시작하세요.');
+
+                } catch (e) {
+                    alert('JSON 파일을 읽는 데 오류가 발생했습니다. 파일 형식을 확인해 주세요.');
+                    console.error('JSON Parsing Error:', e);
+                }
+            };
+            reader.readAsText(file);
+        }
+        // --- End of JSON 파일 불러오기 기능 ---
+
+
+        // 이벤트 리스너 등록
+        addBtn.addEventListener('click', addEndpoint);
+        downloadBtn.addEventListener('click', downloadJSON);
+        loadJsonBtn.addEventListener('click', loadJSON);
+        addHeaderInputBtn.addEventListener('click', () => addHeaderInput());
+        addResponseInputBtn.addEventListener('click', () => addResponseInput());
+    </script>
+</body>
+</html>
