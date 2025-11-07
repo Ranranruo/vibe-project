@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAPI 3.0 명세서 편집기</title>
+<style>
+/* ============================= */
+/* 1. 전체 테마 (Pinterest/Notion 감성) */
+/* ============================= */
+:root {
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --accent: #10b981;
+  --danger: #ef4444;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-700: #374151;
+  --text-dark: #1f2937;
+  --radius: 14px;
+  --shadow: 0 8px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 30px rgba(0,0,0,0.12);
+  --transition: all 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  background: var(--gray-50);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 40px 20px;
+  transition: background 0.3s;
+}
+
+h1 {
+  font-size: 2.4rem;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--gray-700);
+}
+
+/* ============================= */
+/* 2. 카드 스타일 */
+/* ============================= */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: none;
+  padding: 30px;
+  margin-bottom: 28px;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================= */
+/* 3. 입력 요소 */
+/* ============================= */
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 8px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--gray-50);
+  transition: var(--transition);
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
+  background: #fff;
+  outline: none;
+}
+textarea {
+  min-height: 100px;
+  font-family: monospace;
+}
+
+/* ============================= */
+/* 4. 버튼 */
+/* ============================= */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--primary-light);
+}
+.btn-secondary {
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+}
+.btn-secondary:hover {
+  background: var(--gray-200);
+}
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+.btn-danger:hover {
+  opacity: 0.85;
+}
+
+/* ============================= */
+/* 5. 리스트/토글 */
+/* ============================= */
+#endpoint-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.endpoint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray-100);
+  padding: 16px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.endpoint-header:hover {
+  background: var(--gray-200);
+}
+.endpoint-header strong {
+  color: var(--primary);
+}
+.spec-display {
+  display: none;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--gray-200);
+  margin-top: 10px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.response-item-header {
+  display: flex;
+  justify-content: space-between;
+  background: var(--gray-100);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.response-item-header:hover {
+  background: var(--gray-200);
+}
+.response-item-body {
+  display: none;
+  padding: 8px 0 8px 8px;
+}
+.response-example-box {
+  background: #1e1e1e;
+  color: #e5e7eb;
+  font-family: monospace;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 6px;
+  overflow-x: auto;
+}
+
+/* ============================= */
+/* 6. 소규모 섹션 */
+/* ============================= */
+.spec-section-container {
+  border: 1px solid var(--gray-300);
+  background: var(--gray-100);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.remove-btn {
+  background: var(--gray-100);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+.remove-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+</style>
+</head>
+<body>
+<div class="main-container">
+  <h1>✨ OpenAPI 명세서 편집기</h1>
+
+  <div class="card">
+    <h2>API 기본 정보</h2>
+    <div class="input-group"><label>API 제목</label><input id="api-title" value="My Awesome API"></div>
+    <div class="input-group"><label>버전</label><input id="api-version" value="1.0.0"></div>
+    <div class="input-group"><label>기본 서버 URL</label><input id="api-server" value="https://api.example.com/v1"></div>
+  </div>
+
+  <div class="card">
+    <h2>엔드포인트 추가</h2>
+    <div class="input-group"><label>URL 경로</label><input id="endpoint-url" placeholder="/users/{id}"></div>
+    <div class="input-group"><label>HTTP 메서드</label>
+      <select id="endpoint-method"><option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option></select>
+    </div>
+
+    <div class="input-group">
+      <label>요청 헤더</label>
+      <div id="headers-list" class="spec-section-container"></div>
+      <button id="add-header-input-btn" class="btn-secondary">➕ 헤더 추가</button>
+    </div>
+
+    <div class="input-group">
+      <label>요청 바디 (Request Body)</label>
+      <textarea id="request-body" placeholder='{"name":"홍길동"}'></textarea>
+    </div>
+
+    <div class="input-group">
+      <label>응답 명세 (Response)</label>
+      <div id="responses-list" class="spec-section-container"></div>
+      <button id="add-response-input-btn" class="btn-secondary">➕ 응답 코드 추가</button>
+    </div>
+
+    <div class="input-group"><label>엔드포인트 설명</label><textarea id="endpoint-description"></textarea></div>
+    <button id="add-endpoint-btn" class="btn-primary">✅ 엔드포인트 추가</button>
+  </div>
+
+  <div class="card">
+    <h2>📘 현재 명세서</h2>
+    <ul id="endpoint-list"></ul>
+  </div>
+</div>
+
+<!-- 스크립트 (기능은 동일, 디자인만 변경) -->
+<script>
+let paths={};
+const urlInput=document.getElementById('endpoint-url');
+const methodSelect=document.getElementById('endpoint-method');
+const descriptionTextarea=document.getElementById('endpoint-description');
+const headersList=document.getElementById('headers-list');
+const responsesList=document.getElementById('responses-list');
+const requestBodyInput=document.getElementById('request-body');
+const endpointList=document.getElementById('endpoint-list');
+const addHeaderInputBtn=document.getElementById('add-header-input-btn');
+const addResponseInputBtn=document.getElementById('add-response-input-btn');
+const addBtn=document.getElementById('add-endpoint-btn');
+
+function addHeaderInput(k='',v=''){const d=document.createElement('div');
+d.className='item-row header-item';
+d.innerHTML=`<input class="header-key" placeholder="Header-Key" value="${k}">
+<input class="header-value" placeholder="Header Value" value="${v}">
+<button type="button" class="remove-btn">X</button>`;
+headersList.appendChild(d);
+d.querySelector('.remove-btn').onclick=()=>d.remove();}
+
+function addResponseInput(code='200',desc='성공',json='{"message":"ok"}'){
+const item=document.createElement('div');
+item.className='response-group response-item';
+item.innerHTML=`<div class="item-row"><input class="response-code" placeholder="코드" value="${code}">
+<input class="response-description" placeholder="설명" value="${desc}">
+<button class="remove-btn">X</button></div>
+<label>응답 헤더:</label><div class="response-headers spec-section-container"></div>
+<button type="button" class="btn-secondary add-response-header-btn">➕ 응답 헤더 추가</button>
+<label>응답 예시(JSON):</label><textarea class="response-example">${json}</textarea>`;
+responsesList.appendChild(item);
+item.querySelector('.remove-btn').onclick=()=>item.remove();
+item.querySelector('.add-response-header-btn').onclick=()=>addResponseHeader(item.querySelector('.response-headers'));
+}
+
+function addResponseHeader(container,k='',v=''){const div=document.createElement('div');
+div.className='item-row';
+div.innerHTML=`<input class="res-header-key" placeholder="Header-Key" value="${k}">
+<input class="res-header-value" placeholder="Header Value" value="${v}">
+<button class="remove-btn">X</button>`;
+container.appendChild(div);
+div.querySelector('.remove-btn').onclick=()=>div.remove();}
+
+function collectHeaders(){
+const headers={};
+headersList.querySelectorAll('.header-item').forEach(i=>{
+const k=i.querySelector('.header-key').value.trim();
+const v=i.querySelector('.header-value').value.trim();
+if(k)headers[k]=v;
+});
+return headers;
+}
+
+function collectResponses(){
+const arr=[];
+responsesList.querySelectorAll('.response-item').forEach(i=>{
+const code=i.querySelector('.response-code').value.trim();
+const desc=i.querySelector('.response-description').value.trim();
+const ex=i.querySelector('.response-example').value;
+const resHeaders={};
+i.querySelectorAll('.res-header-key').forEach((h,idx)=>{
+const key=h.value.trim();
+const val=i.querySelectorAll('.res-header-value')[idx].value.trim();
+if(key)resHeaders[key]=val;
+});
+if(code)arr.push({code,desc,jsonExample:ex,headers:resHeaders});
+});
+return arr;
+}
+
+function tryParseJSON(txt){try{return JSON.parse(txt);}catch{return txt;}}
+
+function createOASResponse(responses){
+const oas={};
+responses.forEach(r=>{
+const content={'application/json':{schema:{type:'object'},example:tryParseJSON(r.jsonExample)}};
+const headers={};
+Object.entries(r.headers).forEach(([k,v])=>{
+headers[k]={description:'Response header',schema:{type:'string'},example:v};
+});
+oas[r.code]={description:r.desc,content,headers};
+});
+return oas;
+}
+
+function addEndpoint(){
+const url=urlInput.value.trim();
+const method=methodSelect.value.toLowerCase();
+const desc=descriptionTextarea.value.trim();
+const headers=collectHeaders();
+const responses=collectResponses();
+const reqBody=requestBodyInput.value.trim();
+if(!url||!desc){alert('URL과 설명을 입력하세요.');return;}
+const operation={
+summary:desc,
+description:desc,
+parameters:Object.entries(headers).map(([k,v])=>({name:k,in:'header',required:true,schema:{type:'string'},example:v})),
+responses:createOASResponse(responses)
+};
+if(reqBody){
+operation.requestBody={required:true,content:{'application/json':{schema:{type:'object'},example:tryParseJSON(reqBody)}}};
+}
+paths[url]=paths[url]||{};
+paths[url][method]=operation;
+renderEndpointList();
+urlInput.value='';descriptionTextarea.value='';requestBodyInput.value='';
+headersList.innerHTML='';responsesList.innerHTML='';
+addHeaderInput();addResponseInput();
+}
+
+function renderEndpointList(){
+endpointList.innerHTML='';
+Object.entries(paths).forEach(([url,methods])=>{
+Object.entries(methods).forEach(([m,o])=>{
+const li=document.createElement('li');
+let reqHeaderHTML='<div><b>요청 헤더:</b> ';
+if(o.parameters?.length){
+reqHeaderHTML+='<ul>';
+o.parameters.forEach(p=>{reqHeaderHTML+=`<li><code>${p.name}</code>: ${p.example||''}</li>`});
+reqHeaderHTML+='</ul>';
+}else reqHeaderHTML+='<i>없음</i>';
+reqHeaderHTML+='</div>';
+
+let reqBodyHTML='<div style="margin-top:8px;"><b>요청 바디:</b> ';
+if(o.requestBody){
+const ex=JSON.stringify(o.requestBody.content['application/json'].example,null,2);
+reqBodyHTML+=`<div class="response-example-box">${ex}</div>`;
+}else reqBodyHTML+='<i>없음</i>';
+reqBodyHTML+='</div>';
+
+let resHTML='<h4 style="margin-top:12px;">응답:</h4>';
+Object.entries(o.responses).forEach(([c,r])=>{
+const ex=r.content?.['application/json']?.example?JSON.stringify(r.content['application/json'].example,null,2):'';
+let headerHTML='';
+if(r.headers && Object.keys(r.headers).length>0){
+headerHTML='<div style="margin-top:8px;"><b>응답 헤더:</b><ul>';
+Object.entries(r.headers).forEach(([hk,hv])=>{
+headerHTML+=`<li><code>${hk}</code>: ${hv.example||''}</li>`;
+});
+headerHTML+='</ul></div>';
+}
+resHTML+=`
+<div class="response-item-header"><span>[${c}] ${r.description}</span><span>▾</span></div>
+<div class="response-item-body">${headerHTML}
+<div class="response-example-box">${ex}</div></div>`;
+});
+
+li.innerHTML=`<div class="endpoint-header"><div><strong>[${m.toUpperCase()}]</strong> ${url}</div><div>▾</div></div>
+<div class="spec-display">
+<p>${o.description}</p>
+${reqHeaderHTML}
+${reqBodyHTML}
+${resHTML}
+</div>`;
+endpointList.appendChild(li);
+li.querySelector('.endpoint-header').onclick=()=>{
+const b=li.querySelector('.spec-display');
+b.style.display=b.style.display==='block'?'none':'block';
+};
+li.querySelectorAll('.response-item-header').forEach(h=>{
+h.onclick=(e)=>{
+e.stopPropagation();
+const b=h.nextElementSibling;
+b.style.display=b.style.display==='block'?'none':'block';
+};
+});
+});
+});
+}
+
+addHeaderInput();
+addResponseInput();
+addHeaderInputBtn.onclick=()=>addHeaderInput();
+addResponseInputBtn.onclick=()=>addResponseInput();
+addBtn.onclick=addEndpoint;
+</script>
+</body>
+</html>
