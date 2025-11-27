@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 맞추기 게임</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; margin: 0; }
+        .game-container { background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        #question-display { font-size: 1.5em; margin-bottom: 5px; min-height: 1.5em; color: #333; }
+        #pos-display { font-size: 0.9em; color: #888; margin-bottom: 20px; }
+        #user-input { padding: 10px; font-size: 1em; width: 80%; border: 2px solid #ccc; border-radius: 5px; }
+        #submit-button { padding: 10px 15px; font-size: 1em; margin-top: 10px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; }
+        #feedback { margin-top: 15px; font-size: 1.1em; font-weight: bold; }
+        .correct { color: green; }
+        .wrong { color: red; }
+        #score-display { margin-top: 20px; font-size: 1em; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <h1>단어 맞추기 게임</h1>
+    <div id="pos-display"></div> <!-- 품사 표시 영역 -->
+    <div id="question-display"></div>
+    <input type="text" id="user-input" placeholder="정답 입력">
+    <button id="submit-button">제출</button>
+    <div id="feedback"></div>
+    <div id="score-display"></div>
+</div>
+
+<script type="module">
+    // NOTE: 이 코드를 실행하려면 a.json 파일이 같은 폴더에 있어야 합니다.
+    const wordList = await fetch("./data.json").then(data => data.json()).catch(err => {
+        console.error("data.json 파일을 불러오지 못했습니다. 파일이 같은 폴더에 있는지 확인하세요.", err);
+        return [
+            ["Error", "JSON 파일을 확인해주세요", "오류"]
+        ];
+    });
+
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answeredCurrentQuestion = false;
+
+    const questionDisplay = document.getElementById('question-display');
+    const posDisplay = document.getElementById('pos-display');
+    const userInput = document.getElementById('user-input');
+    const submitButton = document.getElementById('submit-button');
+    const feedbackDisplay = document.getElementById('feedback');
+    const scoreDisplay = document.getElementById('score-display');
+
+    // 품사 약어를 한국어로 변환하는 헬퍼 함수
+    function formatPOS(posString) {
+        const map = {
+            'N': '명사',
+            'V': '동사',
+            'A': '형용사',
+            'P': '구/표현',
+            'Prep': '전치사',
+            'Conj': '접속사',
+            'Adv': '부사',
+            'Intj': '감탄사'
+        };
+        return '[' + posString.split(',').map(p => map[p.trim()] || p.trim()).join(', ') + ']';
+    }
+
+    // 1. 초기화: 모든 단어를 영->한, 한->영 두 가지 모드로 문제 생성
+    function initializeGame() {
+        wordList.forEach(item => {
+            const pos = item[0];
+            const english = item[1];
+            const korean = item[2];
+
+            // 영어를 보여주고 한국어 답을 맞추는 문제
+            questions.push({
+                questionText: english,
+                correctAnswers: korean.split(','),
+                type: 'E2K',
+                pos: pos
+            });
+
+            // 한국어를 보여주고 영어 답을 맞추는 문제
+            questions.push({
+                questionText: korean,
+                correctAnswers: [english],
+                type: 'K2E',
+                pos: pos
+            });
+        });
+        questions = questions.sort(() => Math.random() - 0.5);
+        loadNextQuestion();
+    }
+
+    // 2. 다음 문제 불러오기
+    function loadNextQuestion() {
+        if (currentQuestionIndex < questions.length) {
+            const currentQ = questions[currentQuestionIndex];
+            
+            questionDisplay.textContent = currentQ.questionText;
+            posDisplay.textContent = formatPOS(currentQ.pos); 
+
+            userInput.value = '';
+            userInput.focus();
+            feedbackDisplay.textContent = '';
+            submitButton.textContent = '제출';
+            answeredCurrentQuestion = false;
+            updateScoreDisplay();
+        } else {
+            endGame();
+        }
+    }
+
+    // 3. 정답 확인 및 다음 단계 트리거
+    function handleAction() {
+        if (answeredCurrentQuestion) {
+            currentQuestionIndex++;
+            loadNextQuestion();
+        } else {
+            checkAnswer();
+        }
+    }
+
+    function checkAnswer() {
+        // 사용자의 입력에서 공백 제거 및 소문자 변환
+        const userAnswerProcessed = userInput.value.trim().toLowerCase().replace(/\s/g, '');
+        const currentQ = questions[currentQuestionIndex];
+        
+        // 정답 목록의 각 항목에서도 공백 제거 및 소문자 변환 후 비교
+        const isCorrect = currentQ.correctAnswers.some(answer => 
+            answer.trim().toLowerCase().replace(/\s/g, '') === userAnswerProcessed
+        );
+
+        if (isCorrect) {
+            feedbackDisplay.textContent = "정답입니다! 🎉 (Enter/클릭으로 다음 문제)";
+            feedbackDisplay.className = 'correct';
+            score++;
+        } else {
+            feedbackDisplay.textContent = `오답입니다. 정답은 '${currentQ.correctAnswers.join(', ')}'입니다. (Enter/클릭으로 다음 문제)`;
+            feedbackDisplay.className = 'wrong';
+        }
+        
+        answeredCurrentQuestion = true;
+        submitButton.textContent = '다음 문제';
+        userInput.focus();
+    }
+
+    // 4. 게임 종료
+    function endGame() {
+        questionDisplay.textContent = "게임 종료! 수고하셨습니다.";
+        posDisplay.textContent = '';
+        feedbackDisplay.textContent = `최종 점수: ${score} / ${questions.length}`;
+        submitButton.disabled = true;
+        userInput.disabled = true;
+    }
+
+    // 5. 점수판 업데이트
+    function updateScoreDisplay() {
+        scoreDisplay.textContent = `문제 ${currentQuestionIndex + 1} / ${questions.length} | 점수: ${score}`;
+    }
+
+    // 이벤트 리스너
+    submitButton.addEventListener('click', handleAction);
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            handleAction();
+        }
+    });
+
+    // 게임 시작
+    initializeGame();
+
+</script>
+
+</body>
+</html>
