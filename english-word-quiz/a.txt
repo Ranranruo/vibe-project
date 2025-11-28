@@ -1,0 +1,2390 @@
+번호,단어,뜻
+0001,food,음식
+0002,Chinese food,중국 음식
+0003,organic food,유기농 음식
+0004,food waste,음식물쓰레기
+0005,pasta,파스타
+0006,carrot,당근
+0007,brownie,"초콜릿 케이크, 브라우니"
+0008,noodle,"국수, 면"
+0009,instant noodles,라면
+0010,ketchup,케첩
+0011,broth,"묽은 수프, 국"
+0012,chicken broth,닭고기 스프
+0013,egg,"계란, 알"
+0014,lay eggs,알을 낳다
+0015,appetizer,"(식욕을 돋우기 위한)전채, 애피타이저"
+0016,side dish,반찬
+0017,snack,"군것질, 간단한 식사"
+0018,snack bar,스낵바 (같은 간단한 식사거리를 파는 곳)
+0019,grain,"곡식, 알갱이"
+0020,whole-grain,"정백하지 않은, 통곡물의"
+0021,rice,"쌀, 밥"
+0022,white rice,흰 쌀밥
+0023,instant rice,즉석밥
+0024,bread,빵
+0025,toast,토스트
+0026,meat,"고기, 육류"
+0027,lamb,양고기
+0028,steak,스테이크
+0029,protein,단백질
+0030,nutrients,"영양분, 영양소"
+0031,nutrition,영양 (섭취)
+0032,calorie,칼로리
+0033,fat,지방
+0034,sugar,"설탕, 당분"
+0035,natural sugar,천연 당분
+0036,seasoning,"양념, 조미료"
+0037,soy sauce,간장
+0038,salt,소금
+0039,oil,기름
+0040,olive oil,올리브유
+0041,drink,"음료, 마실 것"
+0042,juice,"주스, 즙"
+0043,orange juice,오렌지 주스
+0044,soda,탄산음료
+0045,water,물
+0046,spring water,생수
+0047,bottled water,병에 든 물
+0048,tap water,수돗물
+0049,caffeine,카페인
+0050,coffee,커피
+0051,ice coffee,아이스 커피
+0052,tea,차
+0053,alcohol,"술, 알코올"
+0054,wine,"포도주, 와인"
+0055,red wine,적포도주
+0056,cook,(음식을) 요리하다
+0057,steam,(음식을) 찌다
+0058,fry,기름에 튀기다
+0059,fry up,기름을 넉넉히 둘러서 볶다
+0060,roast,"(고기 등을) 굽다, 볶다"
+0061,bake,"(빵, 과자 등을) 굽다"
+0062,eat,먹다
+0063,have,먹다
+0064,taste,(음식을) 맛보다
+0065,sip,홀짝이다
+0066,chew,(음식을) 씹다
+0067,swallow,(음식을) 삼키다
+0068,chop,"(고기, 채소 등을) 썰다, 다듬다"
+0069,cut,(음식을) 자르다
+0070,mix,(재료 등을) 섞다
+0071,pour,(물 등을) 따르다
+0072,stir,휘젓다
+0073,slice,(빵 등을) 얇게 썰다
+0074,serve,(음식을) 제공하다
+0075,boil,(물을) 끓이다
+0076,reheat,(음식을) 다시 데우다
+0077,raw,"날것의, 익히지 않은"
+0078,ripe,"(과일이) 익은, 숙성한"
+0079,fresh,신선한
+0080,freshly,갓
+0081,sweet,달콤한
+0082,spicy,매운
+0083,salty,짠
+0084,sour,신
+0085,savory,풍미 있는
+0086,bitter,쓴
+0087,delicious,맛있는
+0088,tasty,맛있는
+0089,tasteless,"싱거운, 아무 맛이 없는"
+0090,appetite,식욕
+0091,meal,식사
+0092,breakfast,아침 식사
+0093,lunch,점심 식사
+0094,dinner,저녁 식사
+0095,home-cooked meal,집에서 만든 음식
+0096,have a meal,식사를 하다
+0097,go out for a meal,외식하러 가다
+0098,take-out,"테이크아웃의, 포장 판매의"
+0099,food poisoning,식중독
+0100,restaurant,"음식점, 식당"
+0101,chef,요리사
+0102,waiter,웨이터
+0103,waitress,웨이트리스
+0104,cater,음식을 공급하다
+0105,fork,포크
+0106,spoon,숟가락
+0107,knife,칼
+0108,napkin,냅킨
+0109,tablecloth,식탁보
+0110,plate,접시
+0111,bowl,"그릇, 사발"
+0112,cup,컵
+0113,dish,"접시, 요리"
+0114,kitchen,주방
+0115,sink,싱크대
+0116,refrigerator,냉장고
+0117,microwave,전자레인지
+0118,oven,오븐
+0119,dishes,식기류
+0120,do the dishes,설거지를 하다
+0121,home,"집, 가정"
+0122,apartment,아파트
+0123,house,"주택, 집"
+0124,single-family house,단독 주택
+0125,townhouse,연립 주택
+0126,neighbor,이웃
+0127,neighborhood,"동네, 근처"
+0128,address,주소
+0129,zip code,우편번호
+0130,landlord,집주인
+0131,tenant,세입자
+0132,rent,집세
+0133,deposit,보증금
+0134,rent a house,집을 빌리다
+0135,move,"이사하다, 움직이다"
+0136,move house,이사하다
+0137,room,방
+0138,bedroom,침실
+0139,living room,거실
+0140,dining room,식당
+0141,bathroom,욕실
+0142,hallway,복도
+0143,balcony,발코니
+0144,basement,지하실
+0145,ceiling,천장
+0146,wall,벽
+0147,floor,"바닥, 층"
+0148,first floor,1층
+0149,door,문
+0150,gate,"대문, 출입구"
+0151,window,창문
+0152,curtain,커튼
+0153,furniture,가구
+0154,table,탁자
+0155,chair,의자
+0156,sofa,소파
+0157,closet,벽장
+0158,bed,침대
+0159,mattress,매트리스
+0160,pillow,베개
+0161,blanket,담요
+0162,mirror,거울
+0163,cabinet,장식장
+0164,lamp,램프
+0165,trash can,쓰레기통
+0166,broom,빗자루
+0167,appliances,가전제품
+0168,computer,컴퓨터
+0169,laptop,노트북 컴퓨터
+0170,smartphone,스마트폰
+0171,television,텔레비전
+0172,heater,난방기
+0173,air conditioner,에어컨
+0174,washing machine,세탁기
+0175,vacuum cleaner,진공 청소기
+0176,clean,청소하다
+0177,wash,씻다
+0178,tidy up,정리하다
+0179,dust,먼지를 털다
+0180,messy,지저분한
+0181,light,"빛, 전등"
+0182,switch on,"(전기, 가스 등을) 켜다"
+0183,turn off,"(전기, 가스 등을) 끄다"
+0184,water,(식물에) 물을 주다
+0185,garage,차고
+0186,yard,마당
+0187,garden,정원
+0188,backyard,뒷마당
+0189,roof,지붕
+0190,smoke,"연기, 담배를 피우다"
+0191,smoke detector,연기 감지기
+0192,earthquake,지진
+0193,fire,"불, 화재"
+0194,firefighter,소방관
+0195,leak,(물 등이) 새다
+0196,break,"깨지다, 부수다"
+0197,damage,피해를 입히다
+0198,lock,자물쇠
+0199,key,열쇠
+0200,safe,안전한
+0201,person,"사람, 인간"
+0202,people,사람들
+0203,human,인간의
+0204,child,어린이
+0205,kid,아이
+0206,adult,"성인, 어른"
+0207,senior,고령자
+0208,gender,성별
+0209,man,남자
+0210,woman,여자
+0211,name,이름
+0212,last name,성씨
+0213,first name,이름
+0214,age,나이
+0215,date of birth,생년월일
+0216,old,"늙은, 오래된"
+0217,young,"젊은, 어린"
+0218,tall,키가 큰
+0219,short,키가 작은
+0220,heavy,무거운
+0221,weight,체중
+0222,lose weight,체중을 줄이다
+0223,gain weight,살이 찌다
+0224,body,몸
+0225,head,머리
+0226,face,얼굴
+0227,eye,눈
+0228,nose,코
+0229,mouth,입
+0230,ear,귀
+0231,neck,목
+0232,shoulder,어깨
+0233,arm,팔
+0234,elbow,팔꿈치
+0235,hand,손
+0236,finger,손가락
+0237,chest,가슴
+0238,stomach,"배, 위"
+0239,leg,다리
+0240,knee,무릎
+0241,foot,발
+0242,toe,발가락
+0243,back,등
+0244,heart,심장
+0245,brain,뇌
+0246,blood,피
+0247,bone,뼈
+0248,muscle,근육
+0249,skin,피부
+0250,hair,"머리카락, 털"
+0251,beard,턱수염
+0252,tooth,치아
+0253,tongue,혀
+0254,breath,"숨, 호흡"
+0255,breathe,숨 쉬다
+0256,smile,미소 짓다
+0257,laugh,웃다
+0258,cry,울다
+0259,yawn,하품하다
+0260,sleep,잠자다
+0261,wake up,잠에서 깨다
+0262,rest,휴식하다
+0263,sneeze,재채기하다
+0264,cough,기침하다
+0265,sweat,땀을 흘리다
+0266,health,건강
+0267,healthy,건강한
+0268,ill,아픈
+0269,sick,아픈
+0270,disease,질병
+0271,cold,감기
+0272,get a cold,감기에 걸리다
+0273,fever,열
+0274,headache,두통
+0275,pain,통증
+0276,sore throat,목 통증
+0277,suffer,고통받다
+0278,hurt,다치게 하다
+0279,injury,부상
+0280,wound,부상
+0281,broken,골절된
+0282,hospital,병원
+0283,doctor,의사
+0284,nurse,간호사
+0285,clinic,진료소
+0286,patient,환자
+0287,medicine,약
+0288,pills,알약
+0289,drug,약물
+0290,pharmacy,약국
+0291,cure,치료하다
+0292,recover,회복하다
+0293,get well,회복하다
+0294,ambulance,구급차
+0295,emergency,"비상, 응급 상황"
+0296,insurance,보험
+0297,diet,"식단, 다이어트"
+0298,exercise,운동
+0299,fit,건강한
+0300,stress,스트레스
+0301,die,죽다
+0302,dead,죽은
+0303,death,죽음
+0304,ghost,유령
+0305,family,가족
+0306,parent,부모
+0307,father,아버지
+0308,mother,어머니
+0309,son,아들
+0310,daughter,딸
+0311,brother,"형제, 오빠, 남동생"
+0312,sister,"자매, 언니, 여동생"
+0313,siblings,"형제, 자매"
+0314,grandparent,조부모
+0315,grandfather,할아버지
+0316,grandmother,할머니
+0317,grandson,손자
+0318,granddaughter,손녀
+0319,uncle,"삼촌, 외삼촌"
+0320,aunt,"이모, 고모, 숙모"
+0321,cousin,사촌
+0322,nephew,조카(남자)
+0323,niece,조카(여자)
+0324,married,결혼한
+0325,husband,남편
+0326,wife,아내
+0327,bride,신부
+0328,groom,신랑
+0329,wedding,결혼식
+0330,divorce,이혼
+0331,friend,친구
+0332,boyfriend,남자친구
+0333,girlfriend,여자친구
+0334,couple,"커플, 한 쌍"
+0335,love,사랑
+0336,date,데이트하다
+0337,relationship,관계
+0338,say hello,인사하다
+0339,greet,인사하다
+0340,hug,껴안다
+0341,kiss,입맞춤하다
+0342,chat,수다 떨다
+0343,talk,말하다
+0344,speak,말하다
+0345,say,말하다
+0346,tell,말하다
+0347,call,"부르다, 전화하다"
+0348,introduce,소개하다
+0349,apologize,사과하다
+0350,thank,고마워하다
+0351,invite,초대하다
+0352,visit,방문하다
+0353,get together,모이다
+0354,party,파티
+0355,celebrate,축하하다
+0356,present,선물
+0357,gift,선물
+0358,happy,행복한
+0359,sad,슬픈
+0360,angry,화난
+0361,excited,신이 난
+0362,nervous,긴장한
+0363,worried,걱정하는
+0364,tired,피곤한
+0365,surprised,놀란
+0366,scared,무서워하는
+0367,bored,지루한
+0368,embarrassed,당황한
+0369,calm,차분한
+0370,shy,수줍은
+0371,mind,"마음, 정신"
+0372,feel,느끼다
+0373,emotion,감정
+0374,mood,기분
+0375,polite,공손한
+0376,kind,친절한
+0377,nice,"친절한, 좋은"
+0378,rude,무례한
+0379,smart,똑똑한
+0380,silly,어리석은
+0381,selfish,이기적인
+0382,loyal,충성스러운
+0383,honest,정직한
+0384,humorous,유머러스한
+0385,respect,존경하다
+0386,admire,존경하다
+0387,trust,신뢰하다
+0388,like,좋아하다
+0389,dislike,싫어하다
+0390,hate,싫어하다
+0391,miss,"그리워하다, 놓치다"
+0392,share,공유하다
+0393,care,보살피다
+0394,support,지원하다
+0395,help,돕다
+0396,fight,싸우다
+0397,argue,논쟁하다
+0398,agree,동의하다
+0399,disagree,동의하지 않다
+0400,promise,약속하다
+0401,clothing,옷
+0402,clothes,옷
+0403,dress,"옷, 드레스"
+0404,shirt,셔츠
+0405,t-shirt,티셔츠
+0406,sweater,스웨터
+0407,jacket,재킷
+0408,coat,코트
+0409,jeans,청바지
+0410,pants,바지
+0411,skirt,치마
+0412,pajamas,잠옷
+0413,socks,양말
+0414,shoes,신발
+0415,sneakers,운동화
+0416,hat,모자
+0417,cap,모자
+0418,belt,벨트
+0419,tie,넥타이
+0420,glove,장갑
+0421,scarf,스카프
+0422,jewelry,"보석, 장신구"
+0423,necklace,목걸이
+0424,ring,반지
+0425,earring,귀걸이
+0426,watch,시계
+0427,wear,"입고 있다, 착용하고 있다"
+0428,put on,"입다, 신다, 쓰다"
+0429,take off,벗다
+0430,undress,옷을 벗다
+0431,style,스타일
+0432,fashion,패션
+0433,design,디자인
+0434,size,크기
+0435,fit,(옷이) 맞다
+0436,tight,(옷이) 꽉 끼는
+0437,loose,(옷이) 헐렁한
+0438,color,색깔
+0439,black,검은색
+0440,white,흰색
+0441,red,빨간색
+0442,blue,파란색
+0443,green,녹색
+0444,yellow,노란색
+0445,purple,보라색
+0446,pink,분홍색
+0447,brown,갈색
+0448,gray,회색
+0449,shopping,쇼핑
+0450,buy,사다
+0451,sell,팔다
+0452,store,가게
+0453,market,시장
+0454,price,가격
+0455,cheap,싼
+0456,expensive,비싼
+0457,cost,"비용, 값"
+0458,pay,지불하다
+0459,cash,현금
+0460,credit card,신용카드
+0461,change,거스름돈
+0462,receipt,영수증
+0463,return,반품하다
+0464,discount,할인
+0465,special offer,특별 할인
+0466,sale,판매
+0467,coupon,쿠폰
+0468,exchange,교환하다
+0469,spend,소비하다
+0470,save,절약하다
+0471,money,돈
+0472,wallet,지갑
+0473,pocket,주머니
+0474,dollar,달러
+0475,won,원(한국 화폐 단위)
+0476,bank,은행
+0477,ATM,현금 인출기
+0478,account,계좌
+0479,deposit,예금하다
+0480,withdraw,인출하다
+0481,loan,대출
+0482,tax,세금
+0483,income,소득
+0484,salary,급여
+0485,fee,요금
+0486,tip,팁
+0487,job,직업
+0488,work,일
+0489,office,사무실
+0490,company,회사
+0491,business,사업
+0492,employee,직원
+0493,boss,"사장, 상사"
+0494,team,팀
+0495,colleague,동료
+0496,meeting,회의
+0497,project,프로젝트
+0498,duty,"의무, 직무"
+0499,responsibility,책임
+0500,task,업무
+0501,deadline,마감일
+0502,schedule,일정
+0503,plan,계획
+0504,retire,은퇴하다
+0505,vacation,휴가
+0506,break,휴식
+0507,praise,칭찬하다
+0508,encourage,격려하다
+0509,complain,불평하다
+0510,fire,해고하다
+0511,resign,사직하다
+0512,traffic,교통
+0513,car,자동차
+0514,bus,버스
+0515,subway,지하철
+0516,train,기차
+0517,plane,비행기
+0518,bicycle,자전거
+0519,drive,운전하다
+0520,ride,(차 등에) 타다
+0521,walk,걷다
+0522,run,뛰다
+0523,stop,멈추다
+0524,start,시작하다
+0525,fast,빠른
+0526,slow,느린
+0527,speed,속도
+0528,lane,차선
+0529,turn,"돌다, 회전하다"
+0530,straight,곧장
+0531,forward,앞으로
+0532,back,뒤로
+0533,road,도로
+0534,street,거리
+0535,highway,고속도로
+0536,intersection,교차로
+0537,bridge,다리
+0538,tunnel,터널
+0539,parking lot,주차장
+0540,gas station,주유소
+0541,taxi,택시
+0542,airport,공항
+0543,station,역
+0544,bus stop,버스 정류장
+0545,ticket,표
+0546,fare,요금
+0547,map,지도
+0548,guide,안내하다
+0549,direction,방향
+0550,north,북쪽
+0551,south,남쪽
+0552,east,동쪽
+0553,west,서쪽
+0554,left,왼쪽
+0555,right,오른쪽
+0556,travel,여행하다
+0557,journey,여행
+0558,tour,여행
+0559,trip,여행
+0560,vacation,"휴가, 방학"
+0561,resort,휴양지
+0562,hotel,호텔
+0563,lodge,숙박하다
+0564,check in,투숙 수속을 하다
+0565,check out,퇴실 수속을 하다
+0566,passport,여권
+0567,visa,비자
+0568,customs,세관
+0569,pack,짐을 싸다
+0570,luggage,수하물
+0571,bag,가방
+0572,backpack,배낭
+0573,souvenir,기념품
+0574,culture,문화
+0575,tradition,전통
+0576,art,예술
+0577,museum,박물관
+0578,gallery,미술관
+0579,painting,그림
+0580,music,음악
+0581,song,노래
+0582,sing,노래하다
+0583,dance,춤추다
+0584,band,악단
+0585,instrument,악기
+0586,movie,영화
+0587,theater,극장
+0588,show,쇼
+0589,performance,공연
+0590,act,연기하다
+0591,actor,배우
+0592,actress,여배우
+0593,history,역사
+0594,story,이야기
+0595,myth,신화
+0596,literature,문학
+0597,book,책
+0598,read,읽다
+0599,write,쓰다
+0600,copy,복사하다
+0601,letter,"편지, 글자"
+0602,sentence,문장
+0603,paragraph,단락
+0604,word,단어
+0605,language,언어
+0606,translate,번역하다
+0607,meaning,의미
+0608,dictionary,사전
+0609,school,학교
+0610,student,학생
+0611,teacher,교사
+0612,professor,교수
+0613,class,"수업, 학급"
+0614,lecture,강의
+0615,study,공부하다
+0616,learn,배우다
+0617,teach,가르치다
+0618,education,교육
+0619,test,시험
+0620,exam,시험
+0621,quiz,쪽지 시험
+0622,grade,성적
+0623,pass,(시험에) 합격하다
+0624,fail,(시험에) 낙제하다
+0625,homework,숙제
+0626,assignment,과제
+0627,paper,논문
+0628,notebook,공책
+0629,pen,펜
+0630,pencil,연필
+0631,eraser,지우개
+0632,rule,규칙
+0633,law,법
+0634,government,정부
+0635,president,대통령
+0636,election,선거
+0637,vote,투표하다
+0638,nation,국가
+0639,country,나라
+0640,citizen,시민
+0641,public,공공의
+0642,private,사적인
+0643,social,사회의
+0644,group,단체
+0645,team,팀
+0646,organization,조직
+0647,community,공동체
+0648,religion,종교
+0649,church,교회
+0650,temple,"사원, 절"
+0651,science,과학
+0652,experiment,실험
+0653,research,연구
+0654,theory,이론
+0655,technology,기술
+0656,computer,컴퓨터
+0657,internet,인터넷
+0658,website,웹사이트
+0659,email,이메일
+0660,message,메시지
+0661,send,보내다
+0662,receive,받다
+0663,call,전화하다
+0664,photo,사진
+0665,video,비디오
+0666,record,기록하다
+0667,print,인쇄하다
+0668,machine,기계
+0669,tool,도구
+0670,material,재료
+0671,wood,나무
+0672,metal,금속
+0673,plastic,플라스틱
+0674,glass,유리
+0675,paper,종이
+0676,weather,날씨
+0677,sun,태양
+0678,sunny,맑은
+0679,cloud,구름
+0680,cloudy,흐린
+0681,rain,비
+0682,rainy,비가 오는
+0683,snow,눈
+0684,snowy,눈이 오는
+0685,wind,바람
+0686,windy,바람이 부는
+0687,storm,폭풍
+0688,thunder,천둥
+0689,lightning,번개
+0690,temperature,온도
+0691,hot,뜨거운
+0692,warm,따뜻한
+0693,cool,시원한
+0694,cold,추운
+0695,air,공기
+0696,breeze,산들바람
+0697,sky,하늘
+0698,star,별
+0699,moon,달
+0700,earth,지구
+0701,nature,자연
+0702,forest,숲
+0703,tree,나무
+0704,flower,꽃
+0705,plant,식물
+0706,grow,자라다
+0707,animal,동물
+0708,pet,애완동물
+0709,dog,개
+0710,cat,고양이
+0711,bird,새
+0712,fish,물고기
+0713,insect,곤충
+0714,mountain,산
+0715,river,강
+0716,sea,바다
+0717,ocean,대양
+0718,beach,해변
+0719,wave,파도
+0720,rock,바위
+0721,sand,모래
+0722,water,물
+0723,ice,얼음
+0724,snow,눈
+0725,fire,불
+0726,color,색깔
+0727,light,빛
+0728,shadow,그림자
+0729,sound,소리
+0730,noise,소음
+0731,loud,소리가 큰
+0732,quiet,조용한
+0733,silence,침묵
+0734,hear,듣다
+0735,listen,듣다
+0736,see,보다
+0737,look,보다
+0738,watch,보다
+0739,smell,냄새 맡다
+0740,taste,맛보다
+0741,touch,만지다
+0742,feel,느끼다
+0743,time,시간
+0744,day,하루
+0745,night,밤
+0746,morning,아침
+0747,afternoon,오후
+0748,evening,저녁
+0749,today,오늘
+0750,yesterday,어제
+0751,tomorrow,내일
+0752,week,주
+0753,weekend,주말
+0754,month,월
+0755,year,년
+0756,second,초
+0757,minute,분
+0758,hour,시간
+0759,o'clock,~시 정각
+0760,date,날짜
+0761,calendar,달력
+0762,clock,시계
+0763,early,일찍
+0764,late,늦게
+0765,always,항상
+0766,often,종종
+0767,sometimes,때때로
+0768,never,결코 ~ 않다
+0769,now,지금
+0770,then,그때
+0771,soon,곧
+0772,ago,~ 전에
+0773,since,~ 이래로
+0774,during,~ 동안에
+0775,before,~ 전에
+0776,after,~ 후에
+0777,when,~할 때
+0778,while,~하는 동안에
+0779,until,~까지
+0780,already,이미
+0781,yet,아직
+0782,still,여전히
+0783,just,방금
+0784,almost,거의
+0785,about,대략
+0786,too,너무
+0787,very,매우
+0788,enough,충분한
+0789,only,오직
+0790,even,심지어
+0791,also,또한
+0792,either,어느 쪽이든
+0793,neither,어느 쪽도 ~ 않다
+0794,both,둘 다
+0795,together,함께
+0796,alone,혼자
+0797,around,주위에
+0798,here,여기
+0799,there,저기
+0800,everywhere,모든 곳에
+0801,nowhere,아무 데도 ~ 않다
+0802,up,위로
+0803,down,아래로
+0804,in,안에
+0805,out,밖에
+0806,on,위에
+0807,off,떨어져서
+0808,at,~에
+0809,to,~에게
+0810,from,~로부터
+0811,by,~ 옆에
+0812,with,~와 함께
+0813,without,~ 없이
+0814,for,~을 위해
+0815,of,~의
+0816,about,~에 대해
+0817,over,~ 위에
+0818,under,~ 아래에
+0819,between,~ 사이에
+0820,among,~ 사이에
+0821,before,~ 전에
+0822,after,~ 후에
+0823,through,~을 통해
+0824,into,~ 안으로
+0825,onto,~ 위로
+0826,near,~ 근처에
+0827,far,먼
+0828,next to,~ 옆에
+0829,what,무엇
+0830,where,어디
+0831,when,언제
+0832,why,왜
+0833,how,어떻게
+0834,who,누구
+0835,which,어느 것
+0836,whose,누구의
+0837,this,이것
+0838,that,저것
+0839,these,이것들
+0840,those,저것들
+0841,all,모든
+0842,some,약간의
+0843,any,어떤
+0844,no,아무것도 ~ 않다
+0845,every,모든
+0846,each,각각의
+0847,many,많은
+0848,much,많은
+0849,few,소수의
+0850,little,약간의
+0851,other,다른
+0852,another,또 다른
+0853,one,하나
+0854,two,둘
+0855,three,셋
+0856,four,넷
+0857,five,다섯
+0858,six,여섯
+0859,seven,일곱
+0860,eight,여덟
+0861,nine,아홉
+0862,ten,열
+0863,hundred,백
+0864,thousand,천
+0865,million,백만
+0866,first,첫 번째
+0867,second,두 번째
+0868,third,세 번째
+0869,next,다음의
+0870,last,마지막의
+0871,big,큰
+0872,small,작은
+0873,long,긴
+0874,short,짧은
+0875,wide,넓은
+0876,narrow,좁은
+0877,high,높은
+0878,low,낮은
+0879,deep,깊은
+0880,shallow,얕은
+0881,heavy,무거운
+0882,light,가벼운
+0883,strong,강한
+0884,weak,약한
+0885,hard,단단한
+0886,soft,부드러운
+0887,good,좋은
+0888,bad,나쁜
+0889,better,더 좋은
+0890,best,가장 좋은
+0891,worse,더 나쁜
+0892,worst,가장 나쁜
+0893,easy,쉬운
+0894,difficult,어려운
+0895,simple,단순한
+0896,complex,복잡한
+0897,true,사실인
+0898,false,거짓인
+0899,real,진짜의
+0900,fake,가짜의
+0901,new,새로운
+0902,old,오래된
+0903,young,어린
+0904,rich,부유한
+0905,poor,가난한
+0906,safe,안전한
+0907,dangerous,위험한
+0908,clean,깨끗한
+0909,dirty,더러운
+0910,empty,비어 있는
+0911,full,가득 찬
+0912,dry,마른
+0913,wet,젖은
+0914,hot,뜨거운
+0915,cold,추운
+0916,warm,따뜻한
+0917,cool,시원한
+0918,bright,밝은
+0919,dark,어두운
+0920,early,이른
+0921,late,늦은
+0922,fast,빠른
+0923,slow,느린
+0924,loud,소리가 큰
+0925,quiet,조용한
+0926,busy,바쁜
+0927,free,한가한
+0928,ready,준비된
+0929,sure,확신하는
+0930,certain,확실한
+0931,possible,가능한
+0932,impossible,불가능한
+0933,able,~할 수 있는
+0934,unable,~할 수 없는
+0935,important,중요한
+0936,necessary,필요한
+0937,useful,유용한
+0938,useless,쓸모없는
+0939,know,알다
+0940,understand,이해하다
+0941,think,생각하다
+0942,believe,믿다
+0943,doubt,의심하다
+0944,remember,기억하다
+0945,forget,잊다
+0946,see,보다
+0947,look,보다
+0948,watch,보다
+0949,hear,듣다
+0950,listen,듣다
+0951,feel,느끼다
+0952,smell,냄새 맡다
+0953,taste,맛보다
+0954,touch,만지다
+0955,say,말하다
+0956,tell,말하다
+0957,speak,말하다
+0958,talk,말하다
+0959,ask,묻다
+0960,answer,대답하다
+0961,write,쓰다
+0962,read,읽다
+0963,learn,배우다
+0964,teach,가르치다
+0965,study,공부하다
+0966,work,일하다
+0967,play,놀다
+0968,run,뛰다
+0969,walk,걷다
+0970,drive,운전하다
+0971,travel,여행하다
+0972,come,오다
+0973,go,가다
+0974,enter,들어가다
+0975,exit,나가다
+0976,leave,떠나다
+0977,return,돌아오다
+0978,stay,머무르다
+0979,live,살다
+0980,die,죽다
+0981,be,"이다, 있다"
+0982,have,가지다
+0983,do,하다
+0984,make,만들다
+0985,take,가져가다
+0986,get,얻다
+0987,give,주다
+0988,put,놓다
+0989,set,"놓다, 설정하다"
+0990,keep,유지하다
+0991,let,~하게 하다
+0992,help,돕다
+0993,try,노력하다
+0994,need,필요하다
+0995,want,원하다
+0996,like,좋아하다
+0997,dislike,싫어하다
+0998,love,사랑하다
+0999,hate,미워하다
+1000,must,~해야 한다
+1001,can,~할 수 있다
+1002,may,~일지도 모른다
+1003,will,~할 것이다
+1004,would,~할 것이다(과거형)
+1005,shall,~할 것이다(의지)
+1006,should,~해야 한다
+1007,a,하나의
+1008,the,그
+1009,I,나는
+1010,you,너는
+1011,he,그는
+1012,she,그녀는
+1013,it,그것은
+1014,we,우리는
+1015,they,그들은
+1016,my,나의
+1017,your,너의
+1018,his,그의
+1019,her,그녀의
+1020,its,그것의
+1021,our,우리의
+1022,their,그들의
+1023,me,나를
+1024,him,그를
+1025,us,우리를
+1026,them,그들을
+1027,mine,나의 것
+1028,yours,너의 것
+1029,hers,그녀의 것
+1030,ours,우리의 것
+1031,theirs,그들의 것
+1032,myself,나 자신
+1033,yourself,너 자신
+1034,himself,그 자신
+1035,herself,그녀 자신
+1036,itself,그것 자신
+1037,ourselves,우리 자신들
+1038,themselves,그들 자신들
+1039,this,이것
+1040,that,저것
+1041,these,이것들
+1042,those,저것들
+1043,some,약간
+1044,any,아무것
+1045,none,아무것도 ~ 않다
+1046,all,모두
+1047,many,많은 것
+1048,much,많은 양
+1049,few,소수
+1050,little,소량
+1051,other,다른 것
+1052,another,또 다른 것
+1053,one,하나
+1054,each,각각
+1055,every,모든 것
+1056,body,"몸, 단체"
+1057,thing,"물건, 일"
+1058,person,사람
+1059,place,장소
+1060,time,시간
+1061,way,방법
+1062,number,숫자
+1063,line,"줄, 선"
+1064,word,단어
+1065,point,"점, 요점"
+1066,home,집
+1067,office,사무실
+1068,city,도시
+1069,country,나라
+1070,world,세계
+1071,air,공기
+1072,water,물
+1073,fire,불
+1074,food,음식
+1075,money,돈
+1076,work,일
+1077,job,직업
+1078,hand,손
+1079,foot,발
+1080,eye,눈
+1081,head,머리
+1082,back,등
+1083,front,앞
+1084,side,옆
+1085,name,이름
+1086,age,나이
+1087,day,하루
+1088,week,주
+1089,month,월
+1090,year,년
+1091,morning,아침
+1092,night,밤
+1093,sun,태양
+1094,moon,달
+1095,star,별
+1096,rain,비
+1097,snow,눈
+1098,wind,바람
+1099,road,도로
+1100,street,거리
+1101,car,자동차
+1102,bus,버스
+1103,train,기차
+1104,plane,비행기
+1105,travel,여행
+1106,music,음악
+1107,book,책
+1108,story,이야기
+1109,game,게임
+1110,sport,스포츠
+1111,school,학교
+1112,student,학생
+1113,teacher,교사
+1114,family,가족
+1115,friend,친구
+1116,love,사랑
+1117,hate,증오
+1118,happy,행복한
+1119,sad,슬픈
+1120,big,큰
+1121,small,작은
+1122,good,좋은
+1123,bad,나쁜
+1124,new,새로운
+1125,old,오래된
+1126,long,긴
+1127,short,짧은
+1128,high,높은
+1129,low,낮은
+1130,easy,쉬운
+1131,hard,어려운
+1132,know,알다
+1133,think,생각하다
+1134,say,말하다
+1135,go,가다
+1136,come,오다
+1137,see,보다
+1138,look,보다
+1139,want,원하다
+1140,need,필요하다
+1141,be,"이다, 있다"
+1142,have,가지다
+1143,do,하다
+1144,make,만들다
+1145,get,얻다
+1146,put,놓다
+1147,take,가져가다
+1148,give,주다
+1149,help,돕다
+1150,try,노력하다
+1151,and,그리고
+1152,or,또는
+1153,but,그러나
+1154,because,~ 때문에
+1155,if,만약 ~라면
+1156,when,~할 때
+1157,where,~하는 곳
+1158,how,어떻게
+1159,what,무엇
+1160,who,누구
+1161,which,어느 것
+1162,to,~에게
+1163,of,~의
+1164,in,~ 안에
+1165,on,~ 위에
+1166,at,~에
+1167,with,~와 함께
+1168,from,~로부터
+1169,for,~을 위해
+1170,about,~에 대해
+1171,up,위로
+1172,down,아래로
+1173,now,지금
+1174,then,그때
+1175,here,여기
+1176,there,저기
+1177,very,매우
+1178,too,너무
+1179,always,항상
+1180,never,결코 ~ 않다
+1181,all,모든
+1182,some,약간의
+1183,any,어떤
+1184,no,아무것도 ~ 않다
+1185,one,하나
+1186,two,둘
+1187,three,셋
+1188,first,첫 번째
+1189,last,마지막
+1190,new,새로운
+1191,old,오래된
+1192,good,좋은
+1193,bad,나쁜
+1194,big,큰
+1195,small,작은
+1196,fast,빠른
+1197,slow,느린
+1198,easy,쉬운
+1199,hard,어려운
+1200,happy,행복한
+1201,day,하루
+1202,night,밤
+1203,morning,아침
+1204,afternoon,오후
+1205,evening,저녁
+1206,today,오늘
+1207,yesterday,어제
+1208,tomorrow,내일
+1209,week,주
+1210,weekend,주말
+1211,month,월
+1212,year,년
+1213,time,시간
+1214,hour,시간
+1215,minute,분
+1216,second,초
+1217,date,날짜
+1218,sun,태양
+1219,moon,달
+1220,star,별
+1221,sky,하늘
+1222,cloud,구름
+1223,rain,비
+1224,snow,눈
+1225,wind,바람
+1226,air,공기
+1227,water,물
+1228,fire,불
+1229,earth,지구
+1230,nature,자연
+1231,tree,나무
+1232,flower,꽃
+1233,animal,동물
+1234,bird,새
+1235,fish,물고기
+1236,person,사람
+1237,man,남자
+1238,woman,여자
+1239,child,어린이
+1240,family,가족
+1241,friend,친구
+1242,home,집
+1243,room,방
+1244,bed,침대
+1245,table,탁자
+1246,chair,의자
+1247,door,문
+1248,window,창문
+1249,car,자동차
+1250,bus,버스
+1251,train,기차
+1252,plane,비행기
+1253,road,도로
+1254,street,거리
+1255,city,도시
+1256,country,나라
+1257,school,학교
+1258,work,일
+1259,money,돈
+1260,food,음식
+1261,drink,음료
+1262,music,음악
+1263,book,책
+1264,movie,영화
+1265,sport,스포츠
+1266,game,게임
+1267,talk,말하다
+1268,write,쓰다
+1269,read,읽다
+1270,know,알다
+1271,think,생각하다
+1272,understand,이해하다
+1273,feel,느끼다
+1274,look,보다
+1275,listen,듣다
+1276,be,"이다, 있다"
+1277,have,가지다
+1278,do,하다
+1279,make,만들다
+1280,get,얻다
+1281,go,가다
+1282,come,오다
+1283,take,가져가다
+1284,give,주다
+1285,put,놓다
+1286,try,노력하다
+1287,help,돕다
+1288,need,필요하다
+1289,want,원하다
+1290,like,좋아하다
+1291,love,사랑하다
+1292,first,첫 번째
+1293,last,마지막
+1294,next,다음의
+1295,early,일찍
+1296,late,늦게
+1297,always,항상
+1298,often,종종
+1299,sometimes,때때로
+1300,never,결코 ~ 않다
+1301,now,지금
+1302,then,그때
+1303,here,여기
+1304,there,저기
+1305,up,위로
+1306,down,아래로
+1307,in,안에
+1308,out,밖에
+1309,on,위에
+1310,off,떨어져서
+1311,big,큰
+1312,small,작은
+1313,good,좋은
+1314,bad,나쁜
+1315,new,새로운
+1316,old,오래된
+1317,long,긴
+1318,short,짧은
+1319,happy,행복한
+1320,sad,슬픈
+1321,easy,쉬운
+1322,hard,어려운
+1323,true,사실인
+1324,false,거짓인
+1325,all,모든
+1326,some,약간의
+1327,any,어떤
+1328,no,아무것도 ~ 않다
+1329,one,하나
+1330,two,둘
+1331,three,셋
+1332,I,나는
+1333,you,너는
+1334,he,그는
+1335,she,그녀는
+1336,it,그것은
+1337,we,우리는
+1338,they,그들은
+1339,my,나의
+1340,your,너의
+1341,his,그의
+1342,her,그녀의
+1343,its,그것의
+1344,our,우리의
+1345,their,그들의
+1346,to,~에게
+1347,of,~의
+1348,in,~ 안에
+1349,on,~ 위에
+1350,at,~에
+1351,with,~와 함께
+1352,from,~로부터
+1353,for,~을 위해
+1354,about,~에 대해
+1355,and,그리고
+1356,or,또는
+1357,but,그러나
+1358,because,~ 때문에
+1359,if,만약 ~라면
+1360,when,~할 때
+1361,where,~하는 곳
+1362,how,어떻게
+1363,what,무엇
+1364,who,누구
+1365,which,어느 것
+1366,to,~에게
+1367,of,~의
+1368,in,~ 안에
+1369,on,~ 위에
+1370,at,~에
+1371,with,~와 함께
+1372,from,~로부터
+1373,for,~을 위해
+1374,about,~에 대해
+1375,up,위로
+1376,down,아래로
+1377,now,지금
+1378,then,그때
+1379,here,여기
+1380,there,저기
+1381,very,매우
+1382,too,너무
+1383,always,항상
+1384,never,결코 ~ 않다
+1385,all,모든
+1386,some,약간의
+1387,any,어떤
+1388,no,아무것도 ~ 않다
+1389,one,하나
+1390,two,둘
+1391,three,셋
+1392,first,첫 번째
+1393,last,마지막
+1394,next,다음의
+1395,early,일찍
+1396,late,늦게
+1397,big,큰
+1398,small,작은
+1399,good,좋은
+1400,bad,나쁜
+1401,new,새로운
+1402,old,오래된
+1403,long,긴
+1404,short,짧은
+1405,happy,행복한
+1406,sad,슬픈
+1407,easy,쉬운
+1408,hard,어려운
+1409,true,사실인
+1410,false,거짓인
+1411,I,나는
+1412,you,너는
+1413,he,그는
+1414,she,그녀는
+1415,it,그것은
+1416,we,우리는
+1417,they,그들은
+1418,to,~에게
+1419,of,~의
+1420,in,~ 안에
+1421,on,~ 위에
+1422,at,~에
+1423,with,~와 함께
+1424,from,~로부터
+1425,for,~을 위해
+1426,about,~에 대해
+1427,and,그리고
+1428,or,또는
+1429,but,그러나
+1430,because,~ 때문에
+1431,if,만약 ~라면
+1432,when,~할 때
+1433,where,~하는 곳
+1434,how,어떻게
+1435,what,무엇
+1436,who,누구
+1437,which,어느 것
+1438,up,위로
+1439,down,아래로
+1440,now,지금
+1441,then,그때
+1442,here,여기
+1443,there,저기
+1444,very,매우
+1445,too,너무
+1446,always,항상
+1447,never,결코 ~ 않다
+1448,all,모든
+1449,some,약간의
+1450,any,어떤
+1451,no,아무것도 ~ 않다
+1452,one,하나
+1453,two,둘
+1454,three,셋
+1455,first,첫 번째
+1456,last,마지막
+1457,next,다음의
+1458,early,일찍
+1459,late,늦게
+1460,big,큰
+1461,small,작은
+1462,good,좋은
+1463,bad,나쁜
+1464,new,새로운
+1465,old,오래된
+1466,long,긴
+1467,short,짧은
+1468,happy,행복한
+1469,sad,슬픈
+1470,easy,쉬운
+1471,hard,어려운
+1472,true,사실인
+1473,false,거짓인
+1474,be,"이다, 있다"
+1475,have,가지다
+1476,do,하다
+1477,make,만들다
+1478,get,얻다
+1479,go,가다
+1480,come,오다
+1481,take,가져가다
+1482,give,주다
+1483,put,놓다
+1484,say,말하다
+1485,tell,말하다
+1486,speak,말하다
+1487,talk,말하다
+1488,write,쓰다
+1489,read,읽다
+1490,know,알다
+1491,think,생각하다
+1492,understand,이해하다
+1493,feel,느끼다
+1494,look,보다
+1495,listen,듣다
+1496,want,원하다
+1497,need,필요하다
+1498,like,좋아하다
+1499,love,사랑하다
+1500,hate,미워하다
+1501,day,하루
+1502,night,밤
+1503,morning,아침
+1504,afternoon,오후
+1505,evening,저녁
+1506,today,오늘
+1507,yesterday,어제
+1508,tomorrow,내일
+1509,week,주
+1510,weekend,주말
+1511,month,월
+1512,year,년
+1513,time,시간
+1514,hour,시간
+1515,minute,분
+1516,second,초
+1517,date,날짜
+1518,sun,태양
+1519,moon,달
+1520,star,별
+1521,sky,하늘
+1522,cloud,구름
+1523,rain,비
+1524,snow,눈
+1525,wind,바람
+1526,air,공기
+1527,water,물
+1528,fire,불
+1529,earth,지구
+1530,nature,자연
+1531,tree,나무
+1532,flower,꽃
+1533,animal,동물
+1534,bird,새
+1535,fish,물고기
+1536,person,사람
+1537,man,남자
+1538,woman,여자
+1539,child,어린이
+1540,family,가족
+1541,friend,친구
+1542,home,집
+1543,room,방
+1544,bed,침대
+1545,table,탁자
+1546,chair,의자
+1547,door,문
+1548,window,창문
+1549,car,자동차
+1550,bus,버스
+1551,train,기차
+1552,plane,비행기
+1553,road,도로
+1554,street,거리
+1555,city,도시
+1556,country,나라
+1557,school,학교
+1558,work,일
+1559,money,돈
+1560,food,음식
+1561,drink,음료
+1562,music,음악
+1563,book,책
+1564,movie,영화
+1565,sport,스포츠
+1566,game,게임
+1567,talk,말하다
+1568,write,쓰다
+1569,read,읽다
+1570,know,알다
+1571,think,생각하다
+1572,understand,이해하다
+1573,feel,느끼다
+1574,look,보다
+1575,listen,듣다
+1576,be,"이다, 있다"
+1577,have,가지다
+1578,do,하다
+1579,make,만들다
+1580,get,얻다
+1581,go,가다
+1582,come,오다
+1583,take,가져가다
+1584,give,주다
+1585,put,놓다
+1586,say,말하다
+1587,tell,말하다
+1588,speak,말하다
+1589,want,원하다
+1590,need,필요하다
+1591,like,좋아하다
+1592,love,사랑하다
+1593,first,첫 번째
+1594,last,마지막
+1595,next,다음의
+1596,early,일찍
+1597,late,늦게
+1598,always,항상
+1599,often,종종
+1600,sometimes,때때로
+1601,never,결코 ~ 않다
+1602,now,지금
+1603,then,그때
+1604,here,여기
+1605,there,저기
+1606,up,위로
+1607,down,아래로
+1608,in,안에
+1609,out,밖에
+1610,on,위에
+1611,off,떨어져서
+1612,big,큰
+1613,small,작은
+1614,good,좋은
+1615,bad,나쁜
+1616,new,새로운
+1617,old,오래된
+1618,long,긴
+1619,short,짧은
+1620,happy,행복한
+1621,sad,슬픈
+1622,easy,쉬운
+1623,hard,어려운
+1624,true,사실인
+1625,false,거짓인
+1626,I,나는
+1627,you,너는
+1628,he,그는
+1629,she,그녀는
+1630,it,그것은
+1631,we,우리는
+1632,they,그들은
+1633,my,나의
+1634,your,너의
+1635,his,그의
+1636,her,그녀의
+1637,its,그것의
+1638,our,우리의
+1639,their,그들의
+1640,me,나를
+1641,you,너를
+1642,him,그를
+1643,her,그녀를
+1644,it,그것을
+1645,us,우리를
+1646,them,그들을
+1647,a,하나의
+1648,the,그
+1649,one,하나
+1650,two,둘
+1651,three,셋
+1652,first,첫 번째
+1653,last,마지막
+1654,next,다음의
+1655,early,이른
+1656,late,늦은
+1657,always,항상
+1658,never,결코 ~ 않다
+1659,now,지금
+1660,then,그때
+1661,here,여기
+1662,there,저기
+1663,up,위로
+1664,down,아래로
+1665,in,안에
+1666,out,밖에
+1667,on,위에
+1668,off,떨어져서
+1669,with,~와 함께
+1670,from,~로부터
+1671,for,~을 위해
+1672,about,~에 대해
+1673,and,그리고
+1674,or,또는
+1675,but,그러나
+1676,because,~ 때문에
+1677,if,만약 ~라면
+1678,when,~할 때
+1679,where,~하는 곳
+1680,how,어떻게
+1681,what,무엇
+1682,who,누구
+1683,which,어느 것
+1684,all,모든
+1685,some,약간의
+1686,any,어떤
+1687,no,아무것도 ~ 않다
+1688,big,큰
+1689,small,작은
+1690,good,좋은
+1691,bad,나쁜
+1692,new,새로운
+1693,old,오래된
+1694,long,긴
+1695,short,짧은
+1696,happy,행복한
+1697,sad,슬픈
+1698,easy,쉬운
+1699,hard,어려운
+1700,true,사실인
+1701,false,거짓인
+1702,be,"이다, 있다"
+1703,have,가지다
+1704,do,하다
+1705,make,만들다
+1706,get,얻다
+1707,go,가다
+1708,come,오다
+1709,take,가져가다
+1710,give,주다
+1711,put,놓다
+1712,say,말하다
+1713,tell,말하다
+1714,speak,말하다
+1715,talk,말하다
+1716,write,쓰다
+1717,read,읽다
+1718,know,알다
+1719,think,생각하다
+1720,understand,이해하다
+1721,feel,느끼다
+1722,look,보다
+1723,listen,듣다
+1724,want,원하다
+1725,need,필요하다
+1726,like,좋아하다
+1727,love,사랑하다
+1728,day,하루
+1729,night,밤
+1730,morning,아침
+1731,afternoon,오후
+1732,evening,저녁
+1733,today,오늘
+1734,yesterday,어제
+1735,tomorrow,내일
+1736,week,주
+1737,weekend,주말
+1738,month,월
+1739,year,년
+1740,time,시간
+1741,hour,시간
+1742,minute,분
+1743,second,초
+1744,date,날짜
+1745,sun,태양
+1746,moon,달
+1747,star,별
+1748,sky,하늘
+1749,cloud,구름
+1750,rain,비
+1751,snow,눈
+1752,wind,바람
+1753,air,공기
+1754,water,물
+1755,fire,불
+1756,earth,지구
+1757,nature,자연
+1758,tree,나무
+1759,flower,꽃
+1760,animal,동물
+1761,bird,새
+1762,fish,물고기
+1763,person,사람
+1764,man,남자
+1765,woman,여자
+1766,child,어린이
+1767,family,가족
+1768,friend,친구
+1769,home,집
+1770,room,방
+1771,bed,침대
+1772,table,탁자
+1773,chair,의자
+1774,door,문
+1775,window,창문
+1776,car,자동차
+1777,bus,버스
+1778,train,기차
+1779,plane,비행기
+1780,road,도로
+1781,street,거리
+1782,city,도시
+1783,country,나라
+1784,school,학교
+1785,work,일
+1786,money,돈
+1787,food,음식
+1788,drink,음료
+1789,music,음악
+1790,book,책
+1791,movie,영화
+1792,sport,스포츠
+1793,game,게임
+1794,talk,말하다
+1795,write,쓰다
+1796,read,읽다
+1797,know,알다
+1798,think,생각하다
+1799,understand,이해하다
+1800,feel,느끼다
+1801,look,보다
+1802,listen,듣다
+1803,want,원하다
+1804,need,필요하다
+1805,like,좋아하다
+1806,love,사랑하다
+1807,first,첫 번째
+1808,last,마지막
+1809,next,다음의
+1810,early,일찍
+1811,late,늦게
+1812,always,항상
+1813,often,종종
+1814,sometimes,때때로
+1815,never,결코 ~ 않다
+1816,now,지금
+1817,then,그때
+1818,here,여기
+1819,there,저기
+1820,up,위로
+1821,down,아래로
+1822,in,안에
+1823,out,밖에
+1824,on,위에
+1825,off,떨어져서
+1826,with,~와 함께
+1827,from,~로부터
+1828,for,~을 위해
+1829,about,~에 대해
+1830,and,그리고
+1831,or,또는
+1832,but,그러나
+1833,because,~ 때문에
+1834,if,만약 ~라면
+1835,when,~할 때
+1836,where,~하는 곳
+1837,how,어떻게
+1838,what,무엇
+1839,who,누구
+1840,which,어느 것
+1841,all,모든
+1842,some,약간의
+1843,any,어떤
+1844,no,아무것도 ~ 않다
+1845,big,큰
+1846,small,작은
+1847,good,좋은
+1848,bad,나쁜
+1849,new,새로운
+1850,old,오래된
+1851,long,긴
+1852,short,짧은
+1853,happy,행복한
+1854,sad,슬픈
+1855,easy,쉬운
+1856,hard,어려운
+1857,true,사실인
+1858,false,거짓인
+1859,I,나는
+1860,you,너는
+1861,he,그는
+1862,she,그녀는
+1863,it,그것은
+1864,we,우리는
+1865,they,그들은
+1866,my,나의
+1867,your,너의
+1868,his,그의
+1869,her,그녀의
+1870,its,그것의
+1871,our,우리의
+1872,their,그들의
+1873,me,나를
+1874,you,너를
+1875,him,그를
+1876,her,그녀를
+1877,it,그것을
+1878,us,우리를
+1879,them,그들을
+1880,a,하나의
+1881,the,그
+1882,one,하나
+1883,two,둘
+1884,three,셋
+1885,first,첫 번째
+1886,last,마지막
+1887,next,다음의
+1888,early,이른
+1889,late,늦은
+1890,always,항상
+1891,never,결코 ~ 않다
+1892,now,지금
+1893,then,그때
+1894,here,여기
+1895,there,저기
+1896,up,위로
+1897,down,아래로
+1898,in,안에
+1899,out,밖에
+1900,on,위에
+1901,off,떨어져서
+1902,with,~와 함께
+1903,from,~로부터
+1904,for,~을 위해
+1905,about,~에 대해
+1906,and,그리고
+1907,or,또는
+1908,but,그러나
+1909,because,~ 때문에
+1910,if,만약 ~라면
+1911,when,~할 때
+1912,where,~하는 곳
+1913,how,어떻게
+1914,what,무엇
+1915,who,누구
+1916,which,어느 것
+1917,all,모든
+1918,some,약간의
+1919,any,어떤
+1920,no,아무것도 ~ 않다
+1921,big,큰
+1922,small,작은
+1923,good,좋은
+1924,bad,나쁜
+1925,new,새로운
+1926,old,오래된
+1927,long,긴
+1928,short,짧은
+1929,happy,행복한
+1930,sad,슬픈
+1931,easy,쉬운
+1932,hard,어려운
+1933,true,사실인
+1934,false,거짓인
+1935,be,"이다, 있다"
+1936,have,가지다
+1937,do,하다
+1938,make,만들다
+1939,get,얻다
+1940,go,가다
+1941,come,오다
+1942,take,가져가다
+1943,give,주다
+1944,put,놓다
+1945,say,말하다
+1946,tell,말하다
+1947,speak,말하다
+1948,talk,말하다
+1949,write,쓰다
+1950,read,읽다
+1951,know,알다
+1952,think,생각하다
+1953,understand,이해하다
+1954,feel,느끼다
+1955,look,보다
+1956,listen,듣다
+1957,want,원하다
+1958,need,필요하다
+1959,like,좋아하다
+1960,love,사랑하다
+1961,first,첫 번째
+1962,last,마지막
+1963,next,다음의
+1964,early,일찍
+1965,late,늦게
+1966,always,항상
+1967,often,종종
+1968,sometimes,때때로
+1969,never,결코 ~ 않다
+1970,now,지금
+1971,then,그때
+1972,here,여기
+1973,there,저기
+1974,up,위로
+1975,down,아래로
+1976,in,안에
+1977,out,밖에
+1978,on,위에
+1979,off,떨어져서
+1980,with,~와 함께
+1981,from,~로부터
+1982,for,~을 위해
+1983,about,~에 대해
+1984,and,그리고
+1985,or,또는
+1986,but,그러나
+1987,because,~ 때문에
+1988,if,만약 ~라면
+1989,when,~할 때
+1990,where,~하는 곳
+1991,how,어떻게
+1992,what,무엇
+1993,who,누구
+1994,which,어느 것
+1995,all,모든
+1996,some,약간의
+1997,any,어떤
+1998,no,아무것도 ~ 않다
+1999,big,큰
+2000,small,작은
+2001,good,좋은
+2002,bad,나쁜
+2003,new,새로운
+2004,old,오래된
+2005,long,긴
+2006,short,짧은
+2007,happy,행복한
+2008,sad,슬픈
+2009,easy,쉬운
+2010,hard,어려운
+2011,true,사실인
+2012,false,거짓인
+2013,be,"이다, 있다"
+2014,have,가지다
+2015,do,하다
+2016,make,만들다
+2017,get,얻다
+2018,go,가다
+2019,come,오다
+2020,take,가져가다
+2021,give,주다
+2022,put,놓다
+2023,say,말하다
+2024,tell,말하다
+2025,speak,말하다
+2026,talk,말하다
+2027,write,쓰다
+2028,read,읽다
+2029,know,알다
+2030,think,생각하다
+2031,understand,이해하다
+2032,feel,느끼다
+2033,look,보다
+2034,listen,듣다
+2035,want,원하다
+2036,need,필요하다
+2037,like,좋아하다
+2038,love,사랑하다
+2039,first,첫 번째
+2040,last,마지막
+2041,next,다음의
+2042,early,일찍
+2043,late,늦게
+2044,always,항상
+2045,often,종종
+2046,sometimes,때때로
+2047,never,결코 ~ 않다
+2048,now,지금
+2049,then,그때
+2050,here,여기
+2051,there,저기
+2052,up,위로
+2053,down,아래로
+2054,in,안에
+2055,out,밖에
+2056,on,위에
+2057,off,떨어져서
+2058,with,~와 함께
+2059,from,~로부터
+2060,for,~을 위해
+2061,about,~에 대해
+2062,and,그리고
+2063,or,또는
+2064,but,그러나
+2065,because,~ 때문에
+2066,if,만약 ~라면
+2067,when,~할 때
+2068,where,~하는 곳
+2069,how,어떻게
+2070,what,무엇
+2071,who,누구
+2072,which,어느 것
+2073,all,모든
+2074,some,약간의
+2075,any,어떤
+2076,no,아무것도 ~ 않다
+2077,big,큰
+2078,small,작은
+2079,good,좋은
+2080,bad,나쁜
+2081,new,새로운
+2082,old,오래된
+2083,long,긴
+2084,short,짧은
+2085,happy,행복한
+2086,sad,슬픈
+2087,easy,쉬운
+2088,hard,어려운
+2089,true,사실인
+2090,false,거짓인
+2091,be,"이다, 있다"
+2092,have,가지다
+2093,do,하다
+2094,make,만들다
+2095,get,얻다
+2096,go,가다
+2097,come,오다
+2098,take,가져가다
+2099,give,주다
+2100,put,놓다
+2101,say,말하다
+2102,tell,말하다
+2103,speak,말하다
+2104,talk,말하다
+2105,write,쓰다
+2106,read,읽다
+2107,know,알다
+2108,think,생각하다
+2109,understand,이해하다
+2110,feel,느끼다
+2111,look,보다
+2112,listen,듣다
+2113,want,원하다
+2114,need,필요하다
+2115,like,좋아하다
+2116,love,사랑하다
+2117,first,첫 번째
+2118,last,마지막
+2119,next,다음의
+2120,early,일찍
+2121,late,늦게
+2122,always,항상
+2123,often,종종
+2124,sometimes,때때로
+2125,never,결코 ~ 않다
+2126,now,지금
+2127,then,그때
+2128,here,여기
+2129,there,저기
+2130,up,위로
+2131,down,아래로
+2132,in,안에
+2133,out,밖에
+2134,on,위에
+2135,off,떨어져서
+2136,with,~와 함께
+2137,from,~로부터
+2138,for,~을 위해
+2139,about,~에 대해
+2140,and,그리고
+2141,or,또는
+2142,but,그러나
+2143,because,~ 때문에
+2144,if,만약 ~라면
+2145,when,~할 때
+2146,where,~하는 곳
+2147,how,어떻게
+2148,what,무엇
+2149,who,누구
+2150,which,어느 것
+2151,all,모든
+2152,some,약간의
+2153,any,어떤
+2154,no,아무것도 ~ 않다
+2155,big,큰
+2156,small,작은
+2157,good,좋은
+2158,bad,나쁜
+2159,new,새로운
+2160,old,오래된
+2161,long,긴
+2162,short,짧은
+2163,happy,행복한
+2164,sad,슬픈
+2165,easy,쉬운
+2166,hard,어려운
+2167,true,사실인
+2168,false,거짓인
+2169,be,"이다, 있다"
+2170,have,가지다
+2171,do,하다
+2172,make,만들다
+2173,get,얻다
+2174,go,가다
+2175,come,오다
+2176,take,가져가다
+2177,give,주다
+2178,put,놓다
+2179,say,말하다
+2180,tell,말하다
+2181,speak,말하다
+2182,talk,말하다
+2183,write,쓰다
+2184,read,읽다
+2185,know,알다
+2186,think,생각하다
+2187,understand,이해하다
+2188,feel,느끼다
+2189,look,보다
+2190,listen,듣다
+2191,want,원하다
+2192,need,필요하다
+2193,like,좋아하다
+2194,love,사랑하다
+2195,first,첫 번째
+2196,last,마지막
+2197,next,다음의
+2198,early,일찍
+2199,late,늦게
+2200,always,항상
+2201,often,종종
+2202,sometimes,때때로
+2203,never,결코 ~ 않다
+2204,now,지금
+2205,then,그때
+2206,here,여기
+2207,there,저기
+2208,up,위로
+2209,down,아래로
+2210,in,안에
+2211,out,밖에
+2212,on,위에
+2213,off,떨어져서
+2214,with,~와 함께
+2215,from,~로부터
+2216,for,~을 위해
+2217,about,~에 대해
+2218,and,그리고
+2219,or,또는
+2220,but,그러나
+2221,because,~ 때문에
+2222,if,만약 ~라면
+2223,when,~할 때
+2224,where,~하는 곳
+2225,how,어떻게
+2226,what,무엇
+2227,who,누구
+2228,which,어느 것
+2229,all,모든
+2230,some,약간의
+2231,any,어떤
+2232,no,아무것도 ~ 않다
+2233,big,큰
+2234,small,작은
+2235,good,좋은
+2236,bad,나쁜
+2237,new,새로운
+2238,old,오래된
+2239,long,긴
+2240,short,짧은
+2241,happy,행복한
+2242,sad,슬픈
+2243,easy,쉬운
+2244,hard,어려운
+2245,true,사실인
+2246,false,거짓인
+2247,be,"이다, 있다"
+2248,have,가지다
+2249,do,하다
+2250,make,만들다
+2251,get,얻다
+2252,go,가다
+2253,come,오다
+2254,take,가져가다
+2255,give,주다
+2256,put,놓다
+2257,say,말하다
+2258,tell,말하다
+2259,speak,말하다
+2260,talk,말하다
+2261,write,쓰다
+2262,read,읽다
+2263,know,알다
+2264,think,생각하다
+2265,understand,이해하다
+2266,feel,느끼다
+2267,look,보다
+2268,listen,듣다
+2269,want,원하다
+2270,need,필요하다
+2271,like,좋아하다
+2272,love,사랑하다
+2273,first,첫 번째
+2274,last,마지막
+2275,next,다음의
+2276,early,일찍
+2277,late,늦게
+2278,always,항상
+2279,often,종종
+2280,sometimes,때때로
+2281,never,결코 ~ 않다
+2282,now,지금
+2283,then,그때
+2284,here,여기
+2285,there,저기
+2286,up,위로
+2287,down,아래로
+2288,in,안에
+2289,out,밖에
+2290,on,위에
+2291,off,떨어져서
+2292,with,~와 함께
+2293,from,~로부터
+2294,for,~을 위해
+2295,about,~에 대해
+2296,and,그리고
+2297,or,또는
+2298,but,그러나
+2299,because,~ 때문에
+3000,if,만약 ~라면
+3001,when,~할 때
+3002,where,~하는 곳
+3003,how,어떻게
+3004,what,무엇
+3005,who,누구
+3006,which,어느 것
+3007,all,모든
+3008,some,약간의
+3009,any,어떤
+3010,no,아무것도 ~ 않다
+3011,big,큰
+3012,small,작은
+3013,good,좋은
+3014,bad,나쁜
+3015,new,새로운
+3016,old,오래된
+3017,long,긴
+3018,short,짧은
+3019,happy,행복한
+3020,sad,슬픈
+3021,easy,쉬운
+3022,hard,어려운
+3023,true,사실인
+3024,false,거짓인
+3025,be,"이다, 있다"
+3026,have,가지다
+3027,do,하다
+3028,make,만들다
+3029,get,얻다
+3030,go,가다
+3031,come,오다
+3032,take,가져가다
+3033,give,주다
+3034,put,놓다
+3035,say,말하다
+3036,tell,말하다
+3037,speak,말하다
+3038,talk,말하다
+3039,write,쓰다
+3040,read,읽다
+3041,know,알다
+3042,think,생각하다
+3043,understand,이해하다
+3044,feel,느끼다
+3045,look,보다
+3046,listen,듣다
+3047,want,원하다
+3048,need,필요하다
+3049,like,좋아하다
+3050,love,사랑하다
+3051,first,첫 번째
+3052,last,마지막
+3053,next,다음의
+3054,early,일찍
+3055,late,늦게
+3056,always,항상
+3057,often,종종
+3058,sometimes,때때로
+3059,never,결코 ~ 않다
+3060,now,지금
+3061,then,그때
+3062,when,~할 때에
+3063,while,~하는 동안에
+3064,the first time,처음 ~할 때에
+3065,as soon as,~하자마자
+3066,and then,"그러고는, 그런 다음"
+3067,as,~하는 동안에
+3068,before,(시간상으로) ~ 전에
+3069,after,~ 후에는
+3070,as long as,"~이기만 하면, ~하는 한"
+3071,if,만약 ~면
+3072,if not,그렇지 않다면
+3073,although,(비록) ~이긴 하지만
+3074,except,~을 제외하면
+3075,because,~ 때문에
+3076,for,왜냐하면 ~이므로
+3077,and,그리고
+3078,but,그러나
+3079,or,또는
+3080,so,그래서
+3081,though,비록 ~지만
+3082,both A and B,A와 B 둘 다
+3083,not A but B,A가 아니라 B
+3084,not only A but also B,A뿐만 아니라 B도
+3085,B as well as A,A뿐만 아니라 B도
+3086,either A or B,"A, B 둘 중 하나"
+3087,neither A nor B,"A, B 둘 다 ~ 않다"
+3088,than,~보다 (더)
+3089,as,~만큼 (…한/하게)
