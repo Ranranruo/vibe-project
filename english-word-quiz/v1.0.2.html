@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>단어 분류 및 맞추기 게임 (JSON 다운로드 기능 포함)</title>
+<style>
+ /* 폰트 및 기본 설정 */
+ body { 
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+ display: flex; 
+ justify-content: center; 
+ align-items: center; 
+ min-height: 100vh;
+ background-color: #f4f7f9;
+ margin: 0; 
+ padding: 20px;
+ }
+
+ /* 게임 컨테이너 */
+ .game-container { 
+ background-color: white; 
+ padding: 40px; 
+ border-radius: 12px;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+ text-align: center; 
+ width: 100%;
+ max-width: 400px;
+ }
+
+ /* 제목 */
+ h1 { 
+ color: #3b82f6;
+ margin-bottom: 30px; 
+ font-weight: 700;
+ }
+
+ /* 품사 표시 */
+ #pos-display { 
+ font-size: 0.9em; 
+ color: #6b7280; 
+ margin-bottom: 10px; 
+ font-weight: 500;
+ }
+ 
+ /* 문제 단어 표시 */
+ #question-display { 
+ font-size: 2em; 
+ margin-bottom: 20px; 
+ min-height: 1.5em; 
+ color: #1f2937; 
+ font-weight: 700;
+ }
+
+ /* 키 안내 */
+ #key-instructions { 
+ font-size: 0.85em; 
+ color: #9ca3af; 
+ margin-bottom: 25px;
+ line-height: 1.5;
+ padding: 10px;
+ border-radius: 6px;
+ background-color: #eff6ff;
+ }
+
+ /* 입력 필드 - 사용하지 않지만 스타일은 유지 */
+ #user-input { 
+ display: none; /* 입력 필드 숨김 */
+ }
+
+ /* 버튼 스타일 */
+ #submit-button { 
+ display: none; /* 제출 버튼 숨김 */
+ }
+ #download-button { 
+ padding: 12px 25px; 
+ font-size: 1em; 
+ margin-top: 25px; /* 게임 종료 시 더 눈에 띄게 */
+ cursor: pointer; 
+ background-color: #10b981; /* 다운로드 버튼 색상 변경 */
+ color: white; 
+ border: none; 
+ border-radius: 8px; 
+ transition: background-color 0.3s, box-shadow 0.3s;
+ font-weight: 600;
+ /* display: none; 초기에는 숨김 */
+ }
+ #download-button:hover:not(:disabled) { 
+ background-color: #059669; 
+ box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+ }
+
+
+ /* 피드백 영역 */
+ #feedback { 
+ margin-top: 20px; 
+ font-size: 1.1em; 
+ font-weight: bold; 
+ min-height: 100px;
+ padding: 10px;
+ border-radius: 8px;
+ background-color: #f9fafb;
+ /* 초기에는 숨김 */
+ display: none; 
+ }
+ .correct { color: #10b981; }
+ .wrong { color: #ef4444; }
+ .info { color: #3b82f6; }
+
+ /* 점수 표시 */
+ #score-display { 
+ margin-top: 30px; 
+ font-size: 0.95em; 
+ color: #4b5563; 
+ padding: 10px;
+ border-top: 1px solid #e5e7eb;
+ }
+
+ /* 정답 리스트 스타일링 */
+ .answer-list { 
+ list-style-type: none; 
+ padding-left: 0; 
+ margin-top: 15px;
+ margin-bottom: 0px;
+ text-align: center;
+ }
+ .answer-list li {
+ background-color: #eef2ff;
+ margin: 4px auto;
+ padding: 6px 12px;
+ border-radius: 6px;
+ font-weight: 500;
+ color: #1e3a8a;
+ max-width: 90%;
+ font-size: 0.9em;
+ display: inline-block;
+ }
+</style>
+</head>
+<body>
+
+<div class="game-container">
+<h1>단어 분류 및 맞추기</h1>
+<div id="pos-display"></div> 
+<div id="question-display"></div>
+<div id="key-instructions">
+ **R (되돌리기)** | **← (모른다)** | **→ (안다)**<br/>
+ <span id="next-key-prompt" style="font-size: 0.9em; color: #f97316; font-weight: bold; display:none;">(아무 키나 눌러 다음 문제로!)</span>
+</div>
+
+ <input type="text" id="user-input" placeholder="정답 입력" style="display:none;">
+<button id="submit-button" style="display:none;">제출</button>
+
+<div id="feedback"></div> 
+<div id="score-display"></div>
+
+<button id="download-button" style="display:none;">⬇️ 분류 결과 다운로드 (JSON)</button>
+</div>
+
+<script type="module">
+// NOTE: 이 코드를 실행하려면 data.json 파일이 같은 폴더에 있어야 합니다.
+// 파일 로드 실패 시 테스트 데이터를 반환하여 오류를 방지합니다.
+const wordList = await fetch("./data.json").then(data => data.json()).catch(err => {
+ console.error("data.json 파일을 불러오지 못했습니다. 파일이 같은 폴더에 있는지 확인하세요.", err);
+ return [
+ ["N", "modern", "현대의,모던한"],
+ ["V", "design", "디자인하다,설계하다"],
+ ["A", "sleek", "매끄러운,세련된"],
+ ["N", "container", "컨테이너,용기"],
+ ["V", "optimize", "최적화하다"],
+ ];
+});
+
+let questions = [];
+let currentQuestionIndex = 0;
+let score = 0; 
+let answeredCurrentQuestion = false;
+
+let knownWords = [];
+let unknownWords = [];
+
+// 문제 기록 배열 (되돌리기 기능용)
+let history = []; 
+
+const questionDisplay = document.getElementById('question-display');
+const posDisplay = document.getElementById('pos-display');
+const userInput = document.getElementById('user-input'); 
+const submitButton = document.getElementById('submit-button'); 
+const feedbackDisplay = document.getElementById('feedback');
+const scoreDisplay = document.getElementById('score-display');
+const downloadButton = document.getElementById('download-button');
+const nextKeyPrompt = document.getElementById('next-key-prompt');
+
+function shuffleArray(array) {
+ for (let i = array.length - 1; i > 0; i--) {
+ const j = Math.floor(Math.random() * (i + 1)); 
+ [array[i], array[j]] = [array[j], array[i]];
+ }
+}
+
+function formatPOS(posString) {
+ const map = {
+ 'N': '명사', 'V': '동사', 'A': '형용사', 'P': '구/표현', 
+ 'Prep': '전치사', 'Conj': '접속사', 'Adv': '부사', 'Intj': '감탄사'
+ };
+ return '[' + posString.split(',').map(p => map[p.trim()] || p.trim()).join(', ') + ']';
+}
+
+// 정답 목록을 HTML 리스트로 반환하는 헬퍼 함수
+function getAnswerListHTML(question) {
+ return '<ul class="answer-list">' + 
+ question.correctAnswers.map(ans => `<li>**${ans}**</li>`).join('') +
+ '</ul>';
+}
+
+// 1. 초기화
+function initializeGame() {
+ wordList.forEach(item => {
+ const pos = item[0];
+ const english = item[1];
+ const korean = item[2];
+ questions.push({
+ 	 questionText: english,
+ 	 correctAnswers: korean.split(',').map(a => a.trim()),
+ 	 type: 'E2K',
+ 	 pos: pos,
+ 	 originalItem: item
+ });
+ });
+ 
+ shuffleArray(questions);
+ loadNextQuestion();
+}
+
+// 2. 다음 문제 불러오기
+function loadNextQuestion() {
+ if (currentQuestionIndex < 0) { 
+ currentQuestionIndex = 0;
+ }
+ 
+ if (currentQuestionIndex < questions.length) {
+ const currentQ = questions[currentQuestionIndex];
+ 
+ questionDisplay.textContent = currentQ.questionText;
+ posDisplay.textContent = formatPOS(currentQ.pos); 
+
+ downloadButton.style.display = 'none'; // 다음 문제 시 다운로드 버튼 숨김
+ feedbackDisplay.textContent = '';
+ feedbackDisplay.className = '';
+ feedbackDisplay.style.display = 'none'; // 피드백/정답 영역 숨김
+ nextKeyPrompt.style.display = 'none'; // 다음 문제 안내 숨김
+
+ answeredCurrentQuestion = false;
+ updateScoreDisplay();
+ } else {
+ endGame();
+ }
+}
+
+// 4. 단어 분류 및 정답 표시 (화살표 키용)
+function classifyWord(isKnown) {
+ if (answeredCurrentQuestion) return; 
+
+ const currentQ = questions[currentQuestionIndex];
+ const answerListHTML = getAnswerListHTML(currentQ);
+ const classificationType = isKnown ? 'known' : 'unknown';
+ 
+ // 분류 배열에 추가
+ if (isKnown) {
+ knownWords.push(currentQ.originalItem);
+ // 메시지 수정: 한국어와 분류 키를 명시
+ feedbackDisplay.innerHTML = `✅ **안다 (→)**<br/>${answerListHTML}`;
+ feedbackDisplay.className = 'correct';
+ } else {
+ unknownWords.push(currentQ.originalItem);
+ // 메시지 수정: 한국어와 분류 키를 명시
+ feedbackDisplay.innerHTML = `❌ **모른다 (←)**<br/>${answerListHTML}`;
+ 	feedbackDisplay.className = 'wrong';
+ }
+ 
+ feedbackDisplay.style.display = 'block'; // 정답/피드백 표시
+
+ // 히스토리에 기록 (되돌리기용)
+ history.push({ 
+ index: currentQuestionIndex, 
+ classification: classificationType,
+ item: currentQ.originalItem,
+ timestamp: Date.now()
+ });
+ 
+ answeredCurrentQuestion = true;
+ 
+ // 다음 문제로 넘어가는 안내 문구 표시
+ nextKeyPrompt.style.display = 'block';
+}
+
+// 5. 이전으로 되돌리기 (R 키용)
+function revertLastAction() {
+ if (history.length === 0) {
+ feedbackDisplay.textContent = "되돌릴 기록이 없습니다. (R)";
+ feedbackDisplay.className = 'info';
+ feedbackDisplay.style.display = 'block';
+ return;
+ }
+
+ const lastAction = history.pop(); 
+
+ currentQuestionIndex = lastAction.index;
+ 
+ const targetArray = lastAction.classification === 'known' ? knownWords : unknownWords;
+ 
+ const itemIndex = targetArray.findIndex(item => item === lastAction.item);
+ 
+ if (itemIndex > -1) {
+ targetArray.splice(itemIndex, 1);
+ }
+
+ feedbackDisplay.textContent = `↩️ 이전 문제 [${lastAction.item[1]}]로 되돌아갑니다. (남은 되돌리기: ${history.length}회)`;
+ feedbackDisplay.className = 'info';
+ feedbackDisplay.style.display = 'block'; // 피드백 표시
+
+ loadNextQuestion();
+ 
+ setTimeout(() => {
+ // 되돌리기 후에는 피드백을 바로 숨기지 않고, 다음 문제 로드에서 처리 (loadNextQuestion()이 feedback을 hidden 처리함)
+ // 하지만 되돌리기 후 잠시 안내를 위해 1초 후 숨김 로직 유지
+ feedbackDisplay.style.display = 'none';
+ }, 1000);
+}
+
+
+// 6. 게임 종료 (다운로드 버튼 표시)
+function endGame() {
+ questionDisplay.textContent = "✅ 분류 완료! 수고하셨습니다.";
+ posDisplay.textContent = '단어 분류 결과 확인';
+ 
+ // 결과 메시지 스타일 개선
+ feedbackDisplay.innerHTML = `<p class="info" style="font-size: 1.2em; margin-bottom: 10px; font-weight: 600;">총 ${knownWords.length + unknownWords.length}개 단어 분류 완료</p>
+    <p class="correct" style="font-size: 1.1em;">**안다** (Known): **${knownWords.length}**개</p>
+    <p class="wrong" style="font-size: 1.1em;">**모른다** (Unknown): **${unknownWords.length}**개</p>`;
+ feedbackDisplay.className = 'info';
+ feedbackDisplay.style.display = 'block'; // 피드백/결과 표시
+ nextKeyPrompt.style.display = 'none'; // 다음 문제 안내 숨김
+ 
+ // 다운로드 버튼 표시 (핵심 변경 사항)
+ downloadButton.style.display = 'block'; 
+ 
+ updateScoreDisplay();
+ scoreDisplay.textContent = `총 단어 수: ${questions.length} | 분류 완료: ${knownWords.length + unknownWords.length}`;
+}
+
+// 7. JSON 파일 다운로드 (기존 로직 유지)
+function downloadJSON() {
+ const result = {
+ // JSON의 key를 명확하게 한국어로 변경
+ '안다_단어_목록(knownWords)': knownWords, 
+ '모른다_단어_목록(unknownWords)': unknownWords, 
+ '총_단어_수': wordList.length,
+ '참고': "각 배열의 항목은 [품사, 영어 단어, 한국어 뜻] 형식입니다."
+ };
+ 
+ const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result, null, 2));
+ const downloadAnchorNode = document.createElement('a');
+ downloadAnchorNode.setAttribute("href", dataStr);
+ downloadAnchorNode.setAttribute("download", "단어_분류_결과.json"); // 파일 이름 한국어로 변경
+ document.body.appendChild(downloadAnchorNode);
+ downloadAnchorNode.click();
+ downloadAnchorNode.remove();
+}
+
+// 8. 점수판 업데이트 (변경 없음)
+function updateScoreDisplay() {
+ if (currentQuestionIndex < questions.length) {
+ scoreDisplay.textContent = `문제 ${currentQuestionIndex + 1} / ${questions.length} | 분류 완료: ${knownWords.length + unknownWords.length}`;
+ }
+}
+
+// 이벤트 리스너
+downloadButton.addEventListener('click', downloadJSON);
+
+// R 키, 화살표 키, 일반 키 이벤트 (변경 없음)
+document.addEventListener('keydown', function(e) {
+ const isGameActive = currentQuestionIndex < questions.length;
+ 
+ // 1. R 키 (되돌리기)
+ if (e.key === 'r' || e.key === 'R') {
+ revertLastAction();
+ e.preventDefault();
+ }
+ 
+ // 2. 분류 키 (화살표) - 현재 문제에 아직 분류하지 않았을 때만 작동
+ else if (isGameActive && !answeredCurrentQuestion) {
+ if (e.key === 'ArrowRight') {
+  classifyWord(true); // 안다
+  e.preventDefault();
+ } else if (e.key === 'ArrowLeft') {
+  classifyWord(false); // 모른다
+  e.preventDefault();
+ }
+ } 
+ 
+ // 3. 다음 문제로 넘어가기 - 분류가 완료되었고(answeredCurrentQuestion = true) R, ←, → 키가 아닐 때
+ else if (isGameActive && answeredCurrentQuestion) {
+ // 어떤 키든 눌렸을 때 다음 문제 로드
+ currentQuestionIndex++;
+ loadNextQuestion();
+ e.preventDefault(); 
+ }
+});
+
+// 게임 시작
+initializeGame();
+
+</script>
+
+</body>
+</html>

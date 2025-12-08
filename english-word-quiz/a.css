@@ -1,0 +1,140 @@
+<style>
+  /* 폰트 및 기본 설정 */
+  body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh;
+    background-color: #f4f7f9;
+    margin: 0; 
+    padding: 20px;
+  }
+
+  /* 게임 컨테이너 */
+  .game-container { 
+    background-color: white; 
+    padding: 40px; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center; 
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 제목 */
+  h1 { 
+    color: #3b82f6;
+    margin-bottom: 30px; 
+    font-weight: 700;
+  }
+
+  /* 품사 표시 */
+  #pos-display { 
+    font-size: 0.9em; 
+    color: #6b7280; 
+    margin-bottom: 10px; 
+    font-weight: 500;
+  }
+  
+  /* 문제 단어 표시 */
+  #question-display { 
+    font-size: 2em; 
+    margin-bottom: 20px; 
+    min-height: 1.5em; 
+    color: #1f2937; 
+    font-weight: 700;
+  }
+
+  /* 키 안내 */
+  #key-instructions { 
+    font-size: 0.85em; 
+    color: #9ca3af; 
+    margin-bottom: 25px;
+    line-height: 1.5;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #eff6ff;
+  }
+
+  /* 입력 필드 */
+  #user-input { 
+    padding: 12px; 
+    font-size: 1.1em; 
+    width: calc(85% - 24px); 
+    border: 1px solid #d1d5db; 
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  #user-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    outline: none;
+  }
+
+  /* 버튼 스타일 */
+  #submit-button, #download-button { 
+    padding: 12px 25px; 
+    font-size: 1em; 
+    margin-top: 10px; 
+    cursor: pointer; 
+    background-color: #3b82f6; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-weight: 600;
+  }
+  #submit-button:hover:not(:disabled), #download-button:hover:not(:disabled) { 
+    background-color: #2563eb; 
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  }
+  #submit-button:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+  }
+
+  /* 피드백 영역 */
+  #feedback { 
+    margin-top: 20px; 
+    font-size: 1.1em; 
+    font-weight: bold; 
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9fafb;
+  }
+  .correct { color: #10b981; }
+  .wrong { color: #ef4444; }
+  .info { color: #3b82f6; }
+
+  /* 점수 표시 */
+  #score-display { 
+    margin-top: 30px; 
+    font-size: 0.95em; 
+    color: #4b5563; 
+    padding: 10px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  /* 정답 리스트 스타일링 */
+  .answer-list { 
+    list-style-type: none; 
+    padding-left: 0; 
+    margin-top: 15px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  .answer-list li {
+    background-color: #eef2ff;
+    margin: 4px auto;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #1e3a8a;
+    max-width: 90%;
+    font-size: 0.9em;
+    display: inline-block;
+  }
+</style>
