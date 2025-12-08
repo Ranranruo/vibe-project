@@ -20,7 +20,7 @@
 <body>
 
 <div class="game-container">
-    <h1>단어 맞추기 게임</h1>
+    <h1>eksakwrp</h1>
     <div id="pos-display"></div> <div id="question-display"></div>
     <input type="text" id="user-input" placeholder="정답 입력">
     <button id="submit-button">제출</button>
@@ -30,7 +30,7 @@
 
 <script type="module">
     // NOTE: 이 코드를 실행하려면 data.json 파일이 같은 폴더에 있어야 합니다.
-    const wordList = await fetch("./data.json").then(data => data.json()).catch(err => {
+    const wordList = await fetch("./data2115.json").then(data => data.json()).catch(err => {
         console.error("data.json 파일을 불러오지 못했습니다. 파일이 같은 폴더에 있는지 확인하세요.", err);
         return [
             ["Error", "JSON 파일을 확인해주세요", "오류"]
@@ -91,12 +91,12 @@
             });
 
             // 한국어를 보여주고 영어 답을 맞추는 문제 (K2E)
-            questions.push({
-                questionText: korean,
-                correctAnswers: [english],
-                type: 'K2E',
-                pos: pos
-            });
+            // questions.push({
+            //     questionText: korean,
+            //     correctAnswers: [english],
+            //     type: 'K2E',
+            //     pos: pos
+            // });
         });
         
         // 👇️ 변경된 부분: Fisher-Yates 셔플 함수를 사용하여 문제를 섞습니다.

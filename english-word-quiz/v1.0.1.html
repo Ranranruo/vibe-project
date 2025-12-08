@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단어 맞추기 게임</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; margin: 0; }
+    .game-container { background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+    h1 { color: #007bff; }
+    #question-display { font-size: 1.5em; margin-bottom: 5px; min-height: 1.5em; color: #333; }
+    #pos-display { font-size: 0.9em; color: #888; margin-bottom: 20px; }
+    #user-input { padding: 10px; font-size: 1em; width: 80%; border: 2px solid #ccc; border-radius: 5px; }
+    #submit-button { padding: 10px 15px; font-size: 1em; margin-top: 10px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; transition: background-color 0.3s; }
+    #submit-button:hover:not(:disabled) { background-color: #0056b3; }
+    #feedback { margin-top: 15px; font-size: 1.1em; font-weight: bold; }
+    .correct { color: green; }
+    .wrong { color: red; }
+    #score-display { margin-top: 20px; font-size: 1em; color: #555; }
+        
+        /* 정답 리스트 스타일링 (ToDo List 느낌) */
+        .answer-list { 
+            list-style-type: none; /* 점 제거 */
+            padding-left: 0; 
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .answer-list li {
+            background-color: #e9ecef; /* 배경색 추가 */
+            margin: 4px auto;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: normal;
+            color: #343a40;
+            max-width: 80%;
+        }
+  </style>
+</head>
+<body>
+
+<div class="game-container">
+  <h1>단어 맞추기 게임</h1>
+  <div id="pos-display"></div> 
+    <div id="question-display"></div>
+  <input type="text" id="user-input" placeholder="정답 입력">
+  <button id="submit-button">제출</button>
+  <div id="feedback"></div>
+  <div id="score-display"></div>
+</div>
+
+<script type="module">
+  // NOTE: 이 코드를 실행하려면 data2115.json 파일이 같은 폴더에 있어야 합니다.
+    // data2115.json 파일 예시: [["N", "apple", "사과"], ["V", "run", "달리다, 뛰다"], ["A", "happy", "행복한,기쁜"]]
+  const wordList = await fetch("./data.json").then(data => data.json()).catch(err => {
+    console.error("data2115.json 파일을 불러오지 못했습니다. 파일이 같은 폴더에 있는지 확인하세요.", err);
+    // 파일 로드 실패 시 테스트 데이터를 반환하여 오류를 방지합니다.
+    return [
+      ["N", "example", "예제,샘플"],
+      ["V", "test", "테스트하다,시험하다"],
+      ["A", "complete", "완전한,마치다"]
+    ];
+  });
+
+  let questions = [];
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let answeredCurrentQuestion = false;
+
+  const questionDisplay = document.getElementById('question-display');
+  const posDisplay = document.getElementById('pos-display');
+  const userInput = document.getElementById('user-input');
+  const submitButton = document.getElementById('submit-button');
+  const feedbackDisplay = document.getElementById('feedback');
+  const scoreDisplay = document.getElementById('score-display');
+
+  // Fisher-Yates 셔플 알고리즘: 배열을 무작위로 섞습니다.
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  // 품사 약어를 한국어로 변환하는 헬퍼 함수
+  function formatPOS(posString) {
+    const map = {
+      'N': '명사',
+      'V': '동사',
+      'A': '형용사',
+      'P': '구/표현',
+      'Prep': '전치사',
+      'Conj': '접속사',
+      'Adv': '부사',
+      'Intj': '감탄사'
+    };
+    return '[' + posString.split(',').map(p => map[p.trim()] || p.trim()).join(', ') + ']';
+  }
+
+  // 1. 초기화: 모든 단어를 영->한 문제로 생성 및 섞기
+  function initializeGame() {
+    wordList.forEach(item => {
+      const pos = item[0];
+      const english = item[1];
+      const korean = item[2];
+
+      // 영어를 보여주고 한국어 답을 맞추는 문제 (E2K)
+      questions.push({
+        questionText: english,
+        correctAnswers: korean.split(',').map(a => a.trim()), // 공백 제거 후 배열에 저장
+        type: 'E2K',
+        pos: pos
+      });
+    });
+    
+    shuffleArray(questions);
+    
+    loadNextQuestion();
+  }
+
+  // 2. 다음 문제 불러오기
+  function loadNextQuestion() {
+    if (currentQuestionIndex < questions.length) {
+      const currentQ = questions[currentQuestionIndex];
+      
+      questionDisplay.textContent = currentQ.questionText;
+      posDisplay.textContent = formatPOS(currentQ.pos); 
+
+      userInput.value = '';
+      userInput.disabled = false;
+      userInput.focus();
+      feedbackDisplay.textContent = '';
+      submitButton.textContent = '제출';
+      submitButton.disabled = false;
+      answeredCurrentQuestion = false;
+      updateScoreDisplay();
+    } else {
+      endGame();
+    }
+  }
+
+  // 3. 정답 확인 및 다음 단계 트리거
+  function handleAction() {
+    if (answeredCurrentQuestion) {
+      currentQuestionIndex++;
+      loadNextQuestion();
+    } else {
+      checkAnswer();
+    }
+  }
+
+  function checkAnswer() {
+    const userAnswerProcessed = userInput.value.trim().toLowerCase().replace(/\s/g, '');
+    const currentQ = questions[currentQuestionIndex];
+    
+    // 정답 목록의 각 항목을 소문자/공백 제거 후 비교
+    const isCorrect = currentQ.correctAnswers.some(answer => 
+      answer.toLowerCase().replace(/\s/g, '') === userAnswerProcessed
+    );
+
+    // 정답 목록을 깔끔한 HTML 리스트 형태로 만듭니다.
+    const answerListHTML = 
+      '<ul class="answer-list">' + 
+      currentQ.correctAnswers.map(ans => `<li>${ans}</li>`).join('') +
+      '</ul>';
+
+    // 짧은 피드백과 정답 리스트 출력
+    if (isCorrect) {
+      feedbackDisplay.innerHTML = `정답입니다! 🎉<br/>${answerListHTML}`;
+      feedbackDisplay.className = 'correct';
+      score++;
+    } else {
+      feedbackDisplay.innerHTML = `오답입니다. 😞<br/>${answerListHTML}`;
+      feedbackDisplay.className = 'wrong';
+    }
+    
+    feedbackDisplay.innerHTML += '<span style="font-weight: normal; display: block; margin-top: 5px;">(Enter/클릭으로 다음 문제)</span>';
+    
+    answeredCurrentQuestion = true;
+    submitButton.textContent = '다음 문제';
+    userInput.disabled = true; // 정답 확인 후 입력 비활성화
+    submitButton.focus(); // 버튼에 포커스 이동
+  }
+
+  // 4. 게임 종료
+  function endGame() {
+    questionDisplay.textContent = "게임 종료! 수고하셨습니다.";
+    posDisplay.textContent = '';
+    feedbackDisplay.textContent = `최종 점수: ${score} / ${questions.length}`;
+    submitButton.disabled = true;
+    userInput.disabled = true;
+    scoreDisplay.textContent = `최종 점수: ${score} / ${questions.length}`;
+  }
+
+  // 5. 점수판 업데이트
+  function updateScoreDisplay() {
+    scoreDisplay.textContent = `문제 ${currentQuestionIndex + 1} / ${questions.length} | 점수: ${score}`;
+  }
+
+  // 이벤트 리스너
+  submitButton.addEventListener('click', handleAction);
+  userInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      // 입력이 비활성화되지 않았을 때만 작동
+      if (userInput.disabled === false || answeredCurrentQuestion) {
+        handleAction();
+      }
+    }
+  });
+
+  // 게임 시작
+  initializeGame();
+
+</script>
+
+</body>
+</html>
